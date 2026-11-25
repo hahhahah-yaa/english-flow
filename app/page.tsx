@@ -47,15 +47,11 @@ export default function Home() {
   const [knownWords,setKnownWords]=useState<string[]>([]);
   const [writing,setWriting]=useState("");
   const [speakingNotes,setSpeakingNotes]=useState("");
-  const [date,setDate]=useState(todayKey());
   const [streak,setStreak]=useState(0);
   const [loaded,setLoaded]=useState(false);
   const totalMinutes=plan.reduce((sum,t)=>sum+t.minutes,0);
   const finished=done.length;
   const percent=Math.round(finished/plan.length*100);
-  const currentTask=plan.find(t=>t.module===active);
-  const allGrammar=grammarQuestions.every((_,i)=>revealed["g"+i]);
-  const readingDone=readingQuestions.every((_,i)=>revealed["r"+i]);
   const vocabDone=knownWords.length>=words.length;
 
   useEffect(()=>{
