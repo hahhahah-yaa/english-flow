@@ -83,6 +83,42 @@ const dayThemes = [
 {title:"Design & creativity",prompt:"Do creative ideas come from freedom or constraints?",listening:"Notice how the speaker develops a point using contrast."},
 {title:"Work & society",prompt:"Is flexible work always better than working in an office?",listening:"Identify an advantage, a drawback and the conclusion."}
 ];
+const makeDailyReading = (seed:number,themeIndex:number) => {
+  const sets=[
+    {
+      opening:["Many cities are trying to improve everyday life by making public spaces greener and easier to reach.","Urban planners increasingly recognise that the quality of a neighbourhood affects how people feel and behave.","As cities become more crowded, small public spaces can play a surprisingly important role."],
+      detail:["A pocket park may give residents a place to rest, meet neighbours or take a short walk.","Even a few trees and benches can offer a break from traffic and busy streets.","These places can encourage people to spend time outdoors without travelling far."],
+      contrast:["However, simply creating a green space does not guarantee that people will use it.","Nevertheless, the benefits may be limited if the space is unsafe or poorly maintained.","Yet a design that looks attractive in photographs may not meet the needs of local residents."],
+      action:["For this reason, communities should be involved in planning and looking after shared spaces.","Successful projects often combine thoughtful design with regular maintenance and public feedback.","Local authorities need to consider access, safety and the everyday habits of the people who live nearby."],
+      ending:["The real value of a public space is measured by how well it becomes part of daily life.","A small project can make a difference when it responds to the people who use it.","Good urban design is not only about appearance; it is also about making ordinary routines better."]
+    },
+    {
+      opening:["Digital technology has made learning materials easier to access than ever before.","Online learning offers flexibility, but it also asks learners to manage their attention carefully.","Many students use digital tools to study, yet having more resources does not always lead to better results."],
+      detail:["A learner might watch a video, save an article and collect new words in an app.","Short quizzes and reminders can help people return to material they would otherwise forget.","Tools that provide immediate feedback can make it easier to notice gaps in understanding."],
+      contrast:["However, collecting information can create the feeling of progress without real learning.","The main difficulty is that easy access may encourage people to switch between tasks too often.","Still, technology cannot replace the effort required to recall and apply information."],
+      action:["A more useful routine combines focused practice with regular review and clear goals.","Learners can benefit by choosing one task, testing themselves and revisiting difficult points later.","It helps to turn notifications off and use digital tools for a specific purpose."],
+      ending:["In the end, the learner's habits matter more than the number of apps they use.","Technology is most effective when it supports active thinking rather than passive consumption.","Progress comes from using resources deliberately, not simply having them available."]
+    },
+    {
+      opening:["Creative people are often expected to produce original ideas immediately.","Design is sometimes presented as inspiration, although the process usually involves research and repeated decisions.","A creative project rarely begins with a perfect idea; it develops through testing and revision."],
+      detail:["A clear brief helps a designer understand the audience, purpose and limits of a project.","Trying several rough options can reveal possibilities that were not obvious at first.","Feedback from other people may expose weaknesses that the creator has overlooked."],
+      contrast:["However, too many restrictions can make it difficult to explore unexpected directions.","At the same time, complete freedom may leave a team unsure where to begin.","An idea that seems exciting at first may also prove difficult to communicate clearly."],
+      action:["The challenge is to treat constraints as useful information rather than obstacles.","Designers can protect experimentation by testing alternatives before choosing a final solution.","A balanced process leaves room for curiosity while keeping the project's purpose in view."],
+      ending:["Strong creative work often comes from the relationship between exploration and careful judgement.","Originality is not only about having a new idea, but also about developing it effectively.","A thoughtful process can turn an uncertain starting point into a clear and meaningful result."]
+    },
+    {
+      opening:["Flexible working has changed how many people organise their professional lives.","Remote work is often praised for giving employees more control over their time.","For many workers, the possibility of working from home has become an important part of job choice."],
+      detail:["Avoiding a daily commute can leave more time for family, exercise or personal projects.","Some teams use online tools to share updates and organise tasks across different locations.","A flexible schedule may help people work when they feel most focused."],
+      contrast:["Nevertheless, working from home can make it harder to separate work from personal life.","Not everyone has a quiet room or reliable internet connection.","Without informal conversations, colleagues may also feel less connected to the team."],
+      action:["Clear expectations and regular communication can reduce some of these difficulties.","Employers should consider the needs of different workers rather than applying one rule to everyone.","A useful arrangement gives people flexibility while maintaining boundaries and support."],
+      ending:["The best working model depends on the task, the team and the individual.","Flexibility works well when it is supported by trust and practical organisation.","Instead of asking which arrangement is always better, organisations should ask what helps people do their work well."]
+    }
+  ];
+  const s=sets[((themeIndex%sets.length)+sets.length)%sets.length];
+  const pick=(a:string[],offset:number)=>a[((seed+offset)%a.length+a.length)%a.length];
+  return [pick(s.opening,0),pick(s.detail,1),pick(s.contrast,2),pick(s.action,3),pick(s.ending,4)].join(" ");
+};
+
 const readingQuestions = [
   {q:"Which statement best describes the passage?", choices:["It argues that one simple solution works in every situation.","It considers a topic and explains why context and practical choices matter.","It lists facts without giving any explanation."], answer:1},
   {q:"What is the role of contrast words such as however or nevertheless?", choices:["They repeat the same idea.","They show a sequence of dates.","They introduce a different or limiting point."], answer:2},
@@ -131,7 +167,7 @@ export default function Home() {
   const [loaded,setLoaded]=useState(false);
   const dayIndex=dayNumber()%dayThemes.length;
   const dailyTheme=dayThemes[dayIndex];
-  const dailyReading=readingTexts[dayIndex];
+  const dailyReading=makeDailyReading(dayNumber(),dayIndex);
   const dailyGrammar=makeDailyGrammar(grammarSeed);
   const wordStart=(dayNumber()*8)%words.length;
   const dailyWords=Array.from({length:8},(_,i)=>words[(wordStart+i)%words.length]);
