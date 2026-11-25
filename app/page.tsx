@@ -1,83 +1,101 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
-const topics = [
-  { icon: "✳", name: "Grammar", detail: "Clear rules, one step at a time", level: "A1–C2", color: "mint" },
-  { icon: "Aa", name: "Vocabulary", detail: "Words you can actually use", level: "Daily words", color: "peach" },
-  { icon: "↗", name: "Reading", detail: "Short texts with guided practice", level: "All levels", color: "lavender" },
-  { icon: "◎", name: "Exam practice", detail: "Prepare with confidence", level: "IELTS · Cambridge", color: "yellow" },
+type ModuleName = "Home" | "Grammar" | "Vocabulary" | "Reading" | "Listening" | "Writing" | "Speaking" | "Exam practice" | "My progress";
+type Task = { id: string; title: string; module: ModuleName; minutes: number; brief: string };
+const plan: Task[] = [
+  { id:"grammar", title:"Grammar in context", module:"Grammar", minutes:25, brief:"Study the rule, notice it in examples, then complete focused practice." },
+  { id:"vocab", title:"Vocabulary: learn and retrieve", module:"Vocabulary", minutes:20, brief:"Learn collocations and actively recall them without looking." },
+  { id:"reading", title:"Reading for meaning", module:"Reading", minutes:25, brief:"Read an authentic-style text, infer meaning and answer comprehension questions." },
+  { id:"listening", title:"Listening and note-taking", module:"Listening", minutes:20, brief:"Use the listening script as a first step; read aloud, summarize and shadow." },
+  { id:"writing", title:"Writing output", module:"Writing", minutes:20, brief:"Write a short structured response and check it against the task goals." },
+  { id:"speaking", title:"Speaking out loud", module:"Speaking", minutes:10, brief:"Speak without scripting first, then improve your answer." },
 ];
-
-const tasks = [
-  { time: "05 min", title: "Present simple vs. present continuous", type: "Grammar", done: false },
-  { time: "05 min", title: "Learn 5 useful everyday words", type: "Vocabulary", done: false },
-  { time: "10 min", title: "Read a short story", type: "Reading", done: false },
+const words = [
+  {word:"to tackle", meaning:"to make an effort to deal with a difficult problem", example:"We need to tackle the problem before it gets worse.", collocation:"tackle a problem / challenge", prompt:"What challenge are you trying to tackle this month?"},
+  {word:"drawback", meaning:"a disadvantage or negative part of something", example:"One drawback of working remotely is feeling isolated.", collocation:"a major / potential drawback", prompt:"What is one drawback of studying online?"},
+  {word:"to enhance", meaning:"to improve the quality, value or strength of something", example:"Reading regularly can enhance your vocabulary.", collocation:"enhance your skills / experience", prompt:"What could enhance your learning routine?"},
+  {word:"whereas", meaning:"used to compare two things and show a difference", example:"I enjoy speaking, whereas my friend prefers writing.", collocation:"A, whereas B", prompt:"Compare two ways of learning using whereas."},
+  {word:"to come up with", meaning:"to think of or produce an idea or solution", example:"The team came up with a creative solution.", collocation:"come up with an idea / solution", prompt:"Describe an idea you came up with recently."},
+  {word:"reliable", meaning:"able to be trusted or depended on", example:"A reliable source gives accurate information.", collocation:"reliable source / person / information", prompt:"What makes a source reliable?"},
+  {word:"to outweigh", meaning:"to be more important or valuable than something else", example:"The benefits outweigh the risks.", collocation:"benefits outweigh drawbacks", prompt:"Do the benefits of social media outweigh its drawbacks?"},
+  {word:"insight", meaning:"a clear and deep understanding of something", example:"The article provides insight into young people's habits.", collocation:"gain / provide insight into", prompt:"What has recently given you insight into a topic?"},
 ];
+const grammarQuestions = [
+  {q:"By the time we arrived, the film _____.", choices:["already started","had already started","has already started"], answer:1, why:"Use past perfect for an event completed before another past event."},
+  {q:"If I _____ more time, I would take up another language.", choices:["have","had","would have"], answer:1, why:"The second conditional uses if + past simple, would + base verb."},
+  {q:"The new library _____ next year.", choices:["will open","will be opened","will have opening"], answer:1, why:"The passive is be + past participle. Here, will be opened."},
+  {q:"She suggested _____ the meeting until Friday.", choices:["to postpone","postpone","postponing"], answer:2, why:"Suggest is followed by a gerund (-ing form) in this structure."},
+  {q:"I wish I _____ so much time on my phone yesterday.", choices:["didn't spend","hadn't spent","wouldn't spend"], answer:1, why:"Wish + past perfect expresses regret about a past situation."},
+];
+const readingText = "Although cities are often associated with noise and congestion, many are investing in small green spaces. These areas may seem insignificant compared with large parks, yet research suggests that nearby nature can encourage people to walk, meet neighbours and take short breaks. However, creating a green space is not enough on its own. If it is poorly maintained or difficult to access, residents may not use it. The most successful projects tend to involve local communities from the beginning, allowing people to shape a place that reflects their needs.";
+const readingQuestions = [
+  {q:"What is the main point of the text?", choices:["Small green spaces can be useful, but their design and accessibility matter.","Large parks are always better than small gardens.","Cities should stop investing in public spaces."], answer:0},
+  {q:"Why involve local communities?", choices:["To reduce the number of visitors.","So the space can respond to residents' needs.","Because maintenance is unnecessary."], answer:1},
+  {q:"In this text, 'poorly maintained' most nearly means…", choices:["not looked after properly","too expensive to build","designed by local people"], answer:0},
+];
+const listeningScript = "Many people believe that productivity means doing more in less time. But constant activity can make it harder to think clearly. One useful strategy is to divide your work into focused sessions and take short breaks between them. During a break, avoid switching to another demanding task. Instead, stand up, get some water or look outside. The aim is not to work endlessly, but to protect your attention so that the time you spend working is more effective.";
+const todayKey = () => new Date().toLocaleDateString("en-CA");
 
 export default function Home() {
-  const [active, setActive] = useState("Home");
-  const [completed, setCompleted] = useState<number[]>([]);
-  const [showQuiz, setShowQuiz] = useState(false);
-  const [answer, setAnswer] = useState("");
-  const [checked, setChecked] = useState(false);
-  const [vocabularyIndex, setVocabularyIndex] = useState(0);
-  const [lessonDone, setLessonDone] = useState(false);
-  const nav = ["Home", "Learn", "Practice", "Vocabulary", "My progress"];
-  const progress = Math.round((completed.length / tasks.length) * 100);
+  const [active,setActive]=useState<ModuleName>("Home");
+  const [done,setDone]=useState<string[]>([]);
+  const [answers,setAnswers]=useState<Record<string,number>>({});
+  const [revealed,setRevealed]=useState<Record<string,boolean>>({});
+  const [wordIndex,setWordIndex]=useState(0);
+  const [knownWords,setKnownWords]=useState<string[]>([]);
+  const [writing,setWriting]=useState("");
+  const [speakingNotes,setSpeakingNotes]=useState("");
+  const [date,setDate]=useState(todayKey());
+  const [streak,setStreak]=useState(0);
+  const [loaded,setLoaded]=useState(false);
+  const totalMinutes=plan.reduce((sum,t)=>sum+t.minutes,0);
+  const finished=done.length;
+  const percent=Math.round(finished/plan.length*100);
+  const currentTask=plan.find(t=>t.module===active);
+  const allGrammar=grammarQuestions.every((_,i)=>revealed["g"+i]);
+  const readingDone=readingQuestions.every((_,i)=>revealed["r"+i]);
+  const vocabDone=knownWords.length>=words.length;
 
-  return (
-    <main className="shell">
-      <aside className="sidebar">
-        <a className="brand" href="#"><span className="brand-mark">e</span><span>english<span className="brand-light">flow</span></span></a>
-        <p className="side-label">YOUR SPACE</p>
-        <nav className="nav">
-          {nav.map((item, i) => <button key={item} className={active === item ? "nav-item active" : "nav-item"} onClick={() => setActive(item)}><span className="nav-icon">{["⌂","▤","✎","Aa","◷"][i]}</span>{item}{item === "My progress" && <span className="nav-dot" />}</button>)}
-        </nav>
-        <div className="sidebar-bottom">
-          <div className="streak"><span className="streak-icon">✦</span><div><strong>Keep your flow</strong><small>A little every day adds up.</small></div></div>
-          <div className="profile"><div className="avatar">H</div><div><strong>My learning space</strong><small>Beginner · A2–B1</small></div><span className="more">···</span></div>
-        </div>
-      </aside>
-
-      <section className="content">
-        <header className="topbar"><div className="breadcrumb">My space <span>/</span> <strong>{active}</strong></div><div className="top-actions"><button className="icon-button" aria-label="Notifications" onClick={() => setActive("Notifications")}>♧</button><button className="help-button" onClick={() => setActive("Help")}>Need a hand? <span>↗</span></button></div></header>
-        <div className="page">{active === "Home" ? <>
-          <section className="welcome">
-            <div><p className="eyebrow">TUESDAY, NOVEMBER 25</p><h1>A little English,<br/><em>a lot of progress.</em></h1><p className="welcome-copy">Your space to learn, practise and find your own flow.<br/>No rush — just one step at a time.</p><button className="primary-button" onClick={() => document.getElementById("daily")?.scrollIntoView({behavior:"smooth"})}>Continue learning <span>→</span></button></div>
-            <div className="welcome-art" aria-label="Decorative illustration"><div className="sun"></div><div className="art-card"><span className="art-word">hello!</span><span className="art-sub">YOUR DAILY<br/>DOSE OF ENGLISH</span><span className="art-spark">✳</span></div><span className="art-leaf leaf-one">〰</span><span className="art-leaf leaf-two">✦</span></div>
-          </section>
-
-          <section className="stats"><div className="stat"><span className="stat-icon mint-icon">✳</span><div><strong>{completed.length}<small> / 3</small></strong><span>Tasks completed</span></div></div><div className="stat"><span className="stat-icon peach-icon">♨</span><div><strong>0 <small>days</small></strong><span>Learning streak</span></div></div><div className="stat progress-stat"><div className="stat-head"><span>Today’s progress</span><strong>{progress}%</strong></div><div className="progress-track"><span style={{width: progress + "%"}} /></div><small>Every minute counts.</small></div></section>
-
-          <section className="section" id="daily"><div className="section-heading"><div><p className="eyebrow">YOUR DAILY PLAN</p><h2>Small steps, <em>big things.</em></h2></div><span className="date-pill">~ 20 min today</span></div>
-            <div className="task-list">{tasks.map((task,i)=><article className={completed.includes(i)?"task completed":"task"} key={task.title}><button className="task-check" aria-label="Mark task complete" onClick={()=>setCompleted(old=>old.includes(i)?old.filter(x=>x!==i):[...old,i])}>{completed.includes(i)?"✓":""}</button><div className="task-info"><span className="task-type">{task.type}</span><h3>{task.title}</h3><span className="task-time">◷ {task.time}</span></div><button className="task-arrow" onClick={()=>{setActive(task.type); if(i===0){setShowQuiz(true);setChecked(false);setAnswer("");} }}>{completed.includes(i)?"Done":"Start"} <span>→</span></button></article>)}</div>
-          </section>
-
-          {showQuiz && <section className="quiz-card"><button className="quiz-close" onClick={()=>setShowQuiz(false)}>×</button><p className="eyebrow">QUICK GRAMMAR CHECK</p><h2>Choose the correct sentence.</h2><p className="quiz-question">“I usually _____ coffee, but today I _____ tea.”</p><div className="answers">{["drink / am drinking","am drinking / drink","drinks / drinking"].map(opt=><button key={opt} className={answer===opt?"answer selected":"answer"} onClick={()=>{setAnswer(opt);setChecked(false)}}>{opt}</button>)}</div>{checked&&<p className={answer==="drink / am drinking"?"feedback correct":"feedback"}>{answer==="drink / am drinking"?"That’s right! Use present simple for habits and present continuous for what is happening today.":"Not quite. Think about a usual habit and something happening today."}</p>}<button className="primary-button" disabled={!answer} onClick={()=>setChecked(true)}>Check answer <span>→</span></button></section>}
-
-          <section className="section explore"><div className="section-heading"><div><p className="eyebrow">FIND YOUR NEXT STEP</p><h2>What would you like <em>to learn?</em></h2></div><button className="text-link" onClick={()=>setActive("Learn")}>Explore all <span>→</span></button></div><div className="topic-grid">{topics.map(t=><button className={"topic-card "+t.color} key={t.name} onClick={()=>setActive(t.name)}><span className="topic-top"><span className="topic-icon">{t.icon}</span><span className="topic-level">{t.level}</span></span><span className="topic-name">{t.name}</span><span className="topic-detail">{t.detail}</span><span className="topic-link">Explore <span>↗</span></span></button>)}</div></section>
-          </> : <section className="section" style={{maxWidth:760, margin:"28px auto", padding:"28px", background:"#fffdf8", borderRadius:24, border:"1px solid #e9e6dc"}}>
-            <p className="eyebrow">ENGLISH FLOW · YOUR LEARNING SPACE</p>
-            <h1 style={{fontSize:36, margin:"8px 0 12px"}}>{active === "Learn" ? "Choose your next step" : active}</h1>
-            {active === "Vocabulary" ? <>
-              <p>Everyday English · useful words</p>
-              <div style={{background:"#e8f2e9", borderRadius:18, padding:28, margin:"24px 0", textAlign:"center"}}>
-                <p style={{fontSize:14, opacity:.7}}>WORD {vocabularyIndex+1} / 5</p><h2 style={{fontSize:34}}>{["improve","although","usually","borrow","opportunity"][vocabularyIndex]}</h2><p>{["to become better","despite the fact that","in most cases","to take and return something","a chance to do something"][vocabularyIndex]}</p><p><i>{["I want to improve my English.","Although it was raining, we went out.","I usually study in the evening.","Can I borrow your pen?","This is a great opportunity."][vocabularyIndex]}</i></p>
-              </div><button className="primary-button" onClick={()=>{setVocabularyIndex((vocabularyIndex+1)%5);setLessonDone(vocabularyIndex===4)}}>{vocabularyIndex===4?"Review words":"Next word"} →</button>{lessonDone&&<p className="feedback correct">Great! You reviewed all 5 words.</p>}
-            </> : active === "Reading" ? <>
-              <p>Short reading · A day in Florence</p><article style={{fontSize:18,lineHeight:1.8,margin:"20px 0"}}><p>Every Saturday, Emma walks around Florence. She likes discovering small streets and quiet cafés. Last week, she found a bookshop near the river. The owner recommended a book in English, so Emma decided to read a few pages every day.</p><p>She does not understand every word, but she can understand the main idea. Little by little, reading becomes easier.</p></article><h3>Question: What did Emma find near the river?</h3><button className="answer" onClick={()=>setAnswer("A bookshop")}>A bookshop</button><button className="answer" onClick={()=>setAnswer("A museum")}>A museum</button>{answer&&<p className={answer==="A bookshop"?"feedback correct":"feedback"}>{answer==="A bookshop"?"Correct!":"Try again: look at the third sentence."}</p>}<button className="primary-button" onClick={()=>{setCompleted(old=>old.includes(2)?old:[...old,2]);setLessonDone(true)}}>Mark reading complete →</button>{lessonDone&&<p className="feedback correct">Reading completed!</p>}
-            </> : active === "Grammar" || active === "Practice" || active === "Exam practice" ? <>
-              <p>Grammar practice · Present simple & present continuous</p><h2 style={{margin:"24px 0 10px"}}>Choose the correct sentence.</h2><p>“I usually _____ coffee, but today I _____ tea.”</p><div className="answers">{["drink / am drinking","am drinking / drink","drinks / drinking"].map(opt=><button key={opt} className={answer===opt?"answer selected":"answer"} onClick={()=>{setAnswer(opt);setChecked(false)}}>{opt}</button>)}</div>{checked&&<p className={answer==="drink / am drinking"?"feedback correct":"feedback"}>{answer==="drink / am drinking"?"That’s right! Present simple is for habits; present continuous is for today’s situation.":"Not quite. Think about a habit and something happening today."}</p>}<button className="primary-button" disabled={!answer} onClick={()=>{setChecked(true);if(answer==="drink / am drinking")setCompleted(old=>old.includes(0)?old:[...old,0])}}>Check answer →</button>
-            </> : active === "My progress" ? <><p>Every small step counts.</p><div style={{fontSize:48,margin:"20px 0"}}>{Math.round(completed.length/3*100)}%</div><div className="progress-track"><span style={{width:(completed.length/3*100)+"%"}}/></div><p>{completed.length} of 3 daily tasks completed.</p><button className="primary-button" onClick={()=>setActive("Home")}>Back to today →</button></>
-            : active === "Help" ? <><p>How to use English Flow</p><p>Choose a daily task or a learning topic. Complete short activities and check your progress on the My progress page.</p><button className="primary-button" onClick={()=>setActive("Home")}>Back home →</button></>
-            : active === "Notifications" ? <><p>You’re all caught up!</p><p>No new notifications right now.</p><button className="primary-button" onClick={()=>setActive("Home")}>Back home →</button></>
-            : <><p>Pick a topic and start with a short activity. You can learn at your own pace.</p><div className="topic-grid">{topics.map(t=><button className={"topic-card "+t.color} key={t.name} onClick={()=>{setActive(t.name);setAnswer("");setChecked(false);setLessonDone(false)}}><span className="topic-name">{t.name}</span><span className="topic-detail">{t.detail}</span><span className="topic-link">Start learning →</span></button>)}</div></>}
-            <button className="text-link" style={{marginTop:28}} onClick={()=>{setActive("Home");setAnswer("");setChecked(false);setLessonDone(false)}}>← Back to home</button>
-          </section>}
-          <footer><span>Made for your learning journey.</span><span>English Flow <b>✳</b></span></footer>
-        </div>
-      </section>
-    </main>
-  );
+  useEffect(()=>{
+    try{
+      const raw=localStorage.getItem("english-flow-progress");
+      if(raw){const saved=JSON.parse(raw); if(saved.date===todayKey()){setDone(saved.done||[]);setKnownWords(saved.knownWords||[]);setStreak(saved.streak||0);} else {setDone([]);setKnownWords(saved.knownWords||[]);setStreak(saved.streak||0);}}
+    }catch{}
+    setLoaded(true);
+  },[]);
+  useEffect(()=>{
+    if(!loaded)return;
+    try{localStorage.setItem("english-flow-progress",JSON.stringify({date:todayKey(),done,knownWords,streak}));}catch{}
+  },[loaded,done,knownWords,streak]);
+  const markDone=(id:string)=>setDone(old=>old.includes(id)?old:[...old,id]);
+  const nav:ModuleName[]=["Home","Grammar","Vocabulary","Reading","Listening","Writing","Speaking","Exam practice","My progress"];
+  const start=(moduleName:ModuleName)=>{setActive(moduleName);window.scrollTo({top:0,behavior:"smooth"});};
+  const score=useMemo(()=>grammarQuestions.reduce((n,q,i)=>n+(answers["g"+i]===q.answer?1:0),0),[answers]);
+  return <main className="shell">
+    <aside className="sidebar"><a className="brand" href="#" onClick={e=>{e.preventDefault();start("Home")}}><span className="brand-mark">e</span><span>english<span className="brand-light">flow</span></span></a>
+      <p className="side-label">YOUR STUDY SPACE</p><nav className="nav">{nav.map((item,i)=><button key={item} className={active===item?"nav-item active":"nav-item"} onClick={()=>start(item)}><span className="nav-icon">{["⌂","▤","Aa","↗","耳","✎","◉","◎","◷"][i]}</span>{item}</button>)}</nav>
+      <div className="sidebar-bottom"><div className="streak"><span className="streak-icon">✦</span><div><strong>Deep study mode</strong><small>{totalMinutes} focused minutes a day</small></div></div><div className="profile"><div className="avatar">B1</div><div><strong>Learning level</strong><small>B1 → B2 → C1</small></div></div></div>
+    </aside>
+    <section className="content"><header className="topbar"><div className="breadcrumb">English Flow <span>/</span> <strong>{active}</strong></div><div className="top-actions"><span className="date-pill">Daily intensive · {totalMinutes} min</span></div></header>
+    <div className="page">
+    {active==="Home"&&<>
+      <section className="welcome"><div><p className="eyebrow">YOUR B1 → C1 JOURNEY</p><h1>Go deeper.<br/><em>Express yourself.</em></h1><p className="welcome-copy">A focused daily routine to build accurate, confident and independent English.<br/>Study actively. Retrieve. Apply. Repeat.</p><button className="primary-button" onClick={()=>start(plan.find(t=>!done.includes(t.id))?.module||"My progress")}>Start today's session <span>→</span></button></div><div className="welcome-art"><div className="sun"/><div className="art-card"><span className="art-word">B1 → C1</span><span className="art-sub">DAILY PRACTICE<br/>REAL PROGRESS</span><span className="art-spark">✳</span></div></div></section>
+      <section className="stats"><div className="stat"><span className="stat-icon mint-icon">✳</span><div><strong>{finished}<small> / {plan.length}</small></strong><span>Daily blocks</span></div></div><div className="stat"><span className="stat-icon peach-icon">◷</span><div><strong>{done.reduce((n,id)=>n+(plan.find(t=>t.id===id)?.minutes||0),0)}<small> min</small></strong><span>Focused today</span></div></div><div className="stat progress-stat"><div className="stat-head"><span>Today's session</span><strong>{percent}%</strong></div><div className="progress-track"><span style={{width:percent+"%"}}/></div><small>Complete each block to finish your daily study.</small></div></section>
+      <section className="section"><div className="section-heading"><div><p className="eyebrow">DAILY INTENSIVE PLAN</p><h2>Today's work, <em>step by step.</em></h2></div><span className="date-pill">~ {Math.floor(totalMinutes/60)}h {totalMinutes%60}m</span></div><div className="task-list">{plan.map(t=><article className={done.includes(t.id)?"task completed":"task"} key={t.id}><button className="task-check" onClick={()=>markDone(t.id)} aria-label="Complete task">{done.includes(t.id)?"✓":""}</button><div className="task-info"><span className="task-type">{t.module} · {t.minutes} min</span><h3>{t.title}</h3><span className="task-time">{t.brief}</span></div><button className="task-arrow" onClick={()=>start(t.module)}>{done.includes(t.id)?"Review":"Start"} <span>→</span></button></article>)}</div></section>
+      <section className="section explore"><div className="section-heading"><div><p className="eyebrow">SKILLS</p><h2>Train every <em>side of English.</em></h2></div></div><div className="topic-grid">{nav.slice(1,8).map((name,i)=><button className={"topic-card "+["mint","peach","lavender","yellow"][i%4]} key={name} onClick={()=>start(name)}><span className="topic-top"><span className="topic-icon">{["✳","Aa","↗","耳","✎","◉","◎"][i]}</span><span className="topic-level">B1–C1</span></span><span className="topic-name">{name}</span><span className="topic-detail">Practice, feedback and active recall</span><span className="topic-link">Open module <span>↗</span></span></button>)}</div></section>
+    </>}
+    {active==="Grammar"&&<section className="section"><p className="eyebrow">GRAMMAR · B1/B2</p><h1>Grammar in context</h1><p className="welcome-copy">Choose an answer, check it, and read why. Aim to explain the rule in your own words.</p><div className="task-list">{grammarQuestions.map((q,i)=><article className="task" key={i} style={{display:"block"}}><span className="task-type">QUESTION {i+1} / {grammarQuestions.length}</span><h3 style={{fontSize:16}}>{q.q}</h3><div className="answers">{q.choices.map((choice,j)=><button key={j} className={answers["g"+i]===j?"answer selected":"answer"} onClick={()=>setAnswers(a=>({...a,["g"+i]:j}))}>{choice}</button>)}</div><button className="text-link" onClick={()=>setRevealed(r=>({...r,["g"+i]:!r["g"+i]}))}>{revealed["g"+i]?"Hide explanation":"Check / explain"}</button>{revealed["g"+i]&&<p className={answers["g"+i]===q.answer?"feedback correct":"feedback"}>{answers["g"+i]===q.answer?"Correct. ":"Review: "}{q.why}</p>}</article>)}</div><p><b>Score:</b> {score}/{grammarQuestions.length} · explanations opened {grammarQuestions.filter((_,i)=>revealed["g"+i]).length}/{grammarQuestions.length}</p><button className="primary-button" onClick={()=>markDone("grammar")}>Complete grammar block →</button></section>}
+    {active==="Vocabulary"&&<section className="section"><p className="eyebrow">VOCABULARY · B1/B2</p><h1>Words you can use</h1><p className="welcome-copy">Learn the meaning, collocation and example. Then create your own sentence before marking it known.</p><div className="quiz-card"><p className="task-type">WORD {wordIndex+1} / {words.length}</p><h2 style={{fontSize:32}}>{words[wordIndex].word}</h2><p>{words[wordIndex].meaning}</p><p><b>Common use:</b> {words[wordIndex].collocation}</p><blockquote>{words[wordIndex].example}</blockquote><p><b>Try it:</b> {words[wordIndex].prompt}</p><textarea value={writing} onChange={e=>setWriting(e.target.value)} placeholder="Write your own sentence or answer here…" rows={4} style={{width:"100%",padding:12,border:"1px solid #e3e9e2",borderRadius:10,font:"inherit"}}/><div className="answers"><button className="primary-button" onClick={()=>{setKnownWords(old=>old.includes(words[wordIndex].word)?old:[...old,words[wordIndex].word]);setWriting("");setWordIndex((wordIndex+1)%words.length)}}>I can use this word →</button><button className="answer" onClick={()=>setWordIndex((wordIndex+1)%words.length)}>Next / review later</button></div><p className="task-time">Words mastered today: {knownWords.length}/{words.length}</p></div><button className="primary-button" onClick={()=>markDone("vocab")}>Complete vocabulary block →</button></section>}
+    {active==="Reading"&&<section className="section"><p className="eyebrow">READING · B2</p><h1>Small spaces, bigger impact</h1><p className="task-time">Read once for the main idea. Read again and underline linking words and unfamiliar phrases.</p><article className="quiz-card" style={{fontSize:16,lineHeight:1.9}}>{readingText}</article><div className="task-list">{readingQuestions.map((q,i)=><article className="task" key={i} style={{display:"block"}}><h3>{i+1}. {q.q}</h3><div className="answers">{q.choices.map((choice,j)=><button key={j} className={answers["r"+i]===j?"answer selected":"answer"} onClick={()=>setAnswers(a=>({...a,["r"+i]:j}))}>{choice}</button>)}</div><button className="text-link" onClick={()=>setRevealed(r=>({...r,["r"+i]:true}))}>Check answer</button>{revealed["r"+i]&&<p className={answers["r"+i]===q.answer?"feedback correct":"feedback"}>{answers["r"+i]===q.answer?"Correct.":"Not quite. "}Correct answer: {q.choices[q.answer]}</p>}</article>)}</div><button className="primary-button" onClick={()=>markDone("reading")}>Complete reading block →</button></section>}
+    {active==="Listening"&&<section className="section"><p className="eyebrow">LISTENING · NOTE-TAKING</p><h1>Protect your attention</h1><p className="welcome-copy">This version includes a listening script so you can practise today. Read it once, cover it, then say the main ideas aloud. Audio will be added as a separate feature.</p><div className="quiz-card"><p style={{lineHeight:1.9}}>{listeningScript}</p><h3>Recall without looking</h3><p>Write three key ideas you remember, then compare with the text.</p><textarea value={writing} onChange={e=>setWriting(e.target.value)} rows={5} placeholder="1. …&#10;2. …&#10;3. …" style={{width:"100%",padding:12,border:"1px solid #e3e9e2",borderRadius:10,font:"inherit"}}/><button className="primary-button" onClick={()=>markDone("listening")}>Complete listening block →</button></div></section>}
+    {active==="Writing"&&<section className="section"><p className="eyebrow">WRITING · B2</p><h1>Build a clear argument</h1><p className="welcome-copy">Write 180–220 words. Give a clear position, two developed reasons, an example and a short conclusion.</p><div className="quiz-card"><h3>Essay question</h3><p>Some people believe that university students should study only subjects that will help them find a job. Others think university should offer a wider education. Discuss both views and give your opinion.</p><textarea value={writing} onChange={e=>setWriting(e.target.value)} rows={14} placeholder="Write your essay here…" style={{width:"100%",padding:12,border:"1px solid #e3e9e2",borderRadius:10,font:"inherit",lineHeight:1.7}}/><p className="task-time">Word count: {writing.trim()?writing.trim().split(/\s+/).length:0} · Aim for 180–220 words</p><h3>Self-check before finishing</h3>{["I answered both parts of the question.","Each paragraph has one clear main idea.","I used linking phrases naturally.","I checked verb forms, articles and punctuation.","My conclusion follows from my arguments."].map(x=><label key={x} style={{display:"block",padding:"8px 0"}}><input type="checkbox"/> {x}</label>)}<button className="primary-button" onClick={()=>markDone("writing")}>Save and complete writing →</button></div></section>}
+    {active==="Speaking"&&<section className="section"><p className="eyebrow">SPEAKING · FLUENCY</p><h1>Speak, then refine</h1><p className="welcome-copy">Speak for 90 seconds before writing notes. Record yourself on your phone if possible, then listen for pauses and repeated words.</p><div className="quiz-card"><h3>Speaking prompt</h3><p>Describe a time when you had to learn something difficult. You should say what you learned, why it was difficult, how you dealt with it, and what you learned about yourself.</p><p><b>Useful language:</b> at first · what I found challenging was… · I gradually realised… · looking back…</p><textarea value={speakingNotes} onChange={e=>setSpeakingNotes(e.target.value)} rows={6} placeholder="After speaking, note your key ideas and any words you struggled to find." style={{width:"100%",padding:12,border:"1px solid #e3e9e2",borderRadius:10,font:"inherit"}}/><button className="primary-button" onClick={()=>markDone("speaking")}>I spoke and reviewed →</button></div></section>}
+    {active==="Exam practice"&&<section className="section"><p className="eyebrow">EXAM PRACTICE · B2</p><h1>Exam-style challenge</h1><p className="welcome-copy">Start with a short Use of English task. Read the whole sentence before choosing.</p><div className="quiz-card"><h3>Choose the best option</h3><p>Despite _____ exhausted, she managed to finish the report.</p><div className="answers">{["be","being","was"].map((x,i)=><button className={answers.exam===i?"answer selected":"answer"} key={x} onClick={()=>setAnswers(a=>({...a,exam:i}))}>{x}</button>)}</div><button className="text-link" onClick={()=>setRevealed(r=>({...r,exam:true}))}>Check answer</button>{revealed.exam&&<p className={answers.exam===1?"feedback correct":"feedback"}>Answer: being. Despite is followed by a noun or gerund, not a full clause.</p>}<hr/><h3>Writing / speaking extension</h3><p>Explain the difference between although and despite. Give one example of each.</p><textarea value={writing} onChange={e=>setWriting(e.target.value)} rows={4} placeholder="Explain the grammar in your own words…" style={{width:"100%",padding:12,border:"1px solid #e3e9e2",borderRadius:10,font:"inherit"}}/><button className="primary-button" onClick={()=>markDone("exam")}>Complete exam challenge →</button></div></section>}
+    {active==="My progress"&&<section className="section"><p className="eyebrow">YOUR PROGRESS</p><h1>Consistency builds fluency.</h1><div className="quiz-card"><h2>{percent}%</h2><div className="progress-track"><span style={{width:percent+"%"}}/></div><p>{finished} of {plan.length} daily blocks completed · {done.reduce((n,id)=>n+(plan.find(t=>t.id===id)?.minutes||0),0)} focused minutes</p><p>Vocabulary reviewed: {knownWords.length}/{words.length} words</p><p>Grammar questions correct: {score}/{grammarQuestions.length}</p><button className="answer" onClick={()=>{setDone([]);setAnswers({});setRevealed({});setKnownWords([])}}>Reset today's progress</button></div><h2>How to move from B1 to B2/C1</h2><p>At B1, focus on accuracy and building range. At B2, develop arguments, understand longer texts and use collocations naturally. C1 requires nuance, flexible language and sustained independent output. This platform is a daily practice tool; progress also needs feedback from real reading, listening and conversation.</p></section>}
+    {active!=="Home"&&<button className="text-link" onClick={()=>start("Home")}>← Back to dashboard</button>}
+    <footer><span>Study with intention. Review with honesty.</span><span>English Flow <b>✳</b></span></footer>
+    </div></section>
+  </main>;
 }
