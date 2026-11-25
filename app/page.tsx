@@ -212,7 +212,10 @@ export default function Home() {
   const [wordIndex,setWordIndex]=useState(0);
   const [grammarSeed,setGrammarSeed]=useState(dayNumber());
   const [readingSeed,setReadingSeed]=useState(dayNumber());
-  const [knownWords,setKnownWords]=useState<string[]>([]);\n  const [completedLessons,setCompletedLessons]=useState<number[]>([]);\n  const [selectedLesson,setSelectedLesson]=useState(0);\n  const [lessonAnswers,setLessonAnswers]=useState<Record<string,number>>({});
+  const [knownWords,setKnownWords]=useState<string[]>([]);
+  const [completedLessons,setCompletedLessons]=useState<number[]>([]);
+  const [selectedLesson,setSelectedLesson]=useState(0);
+  const [lessonAnswers,setLessonAnswers]=useState<Record<string,number>>({});
   const [mistakes,setMistakes]=useState<string[]>([]);
   const [reviewItems,setReviewItems]=useState<ReviewItem[]>([]);
   const [writing,setWriting]=useState("");\n  const [writingReview,setWritingReview]=useState(false);
@@ -233,7 +236,7 @@ export default function Home() {
   useEffect(()=>{
     try{
       const raw=localStorage.getItem("english-flow-progress");
-      if(raw){const saved=JSON.parse(raw); if(saved.date===todayKey()){setDone(saved.done||[]);setKnownWords(saved.knownWords||[]);setCompletedLessons(saved.completedLessons||[]);setMistakes(saved.mistakes||[]);setStreak(saved.streak||0);setReviewItems(saved.reviewItems||[]);setWriting(saved.writing||"");setSpeakingNotes(saved.speakingNotes||"");} else {setDone([]);setKnownWords(saved.knownWords||[]);setMistakes(saved.mistakes||[]);setStreak(saved.streak||0);setReviewItems(saved.reviewItems||[]);}}
+      if(raw){const saved=JSON.parse(raw); if(saved.date===todayKey()){setDone(saved.done||[]);setKnownWords(saved.knownWords||[]);setCompletedLessons(saved.completedLessons||[]);setMistakes(saved.mistakes||[]);setStreak(saved.streak||0);setReviewItems(saved.reviewItems||[]);setWriting(saved.writing||"");setSpeakingNotes(saved.speakingNotes||"");} else {setDone([]);setKnownWords(saved.knownWords||[]);setCompletedLessons(saved.completedLessons||[]);setMistakes(saved.mistakes||[]);setStreak(saved.streak||0);setReviewItems(saved.reviewItems||[]);}}
     }catch{}
     setLoaded(true);
   },[]);
