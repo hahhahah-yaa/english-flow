@@ -74,15 +74,15 @@ const makeDailyGrammar = (seed:number) => {
   const pick=(list:string[],n:number)=>list[((n%list.length)+list.length)%list.length];
   const people=["Maya","Leo","Sofia","Daniel","Amira","Luca","Eva","Noah"];
   const subjects=["the presentation","the campaign","the new website","the exhibition","the report","the project"];
-  const verbs=["finish","submit","prepare","design","review","publish"];
+  const verbs=[["finish","finished"],["submit","submitted"],["prepare","prepared"],["design","designed"],["review","reviewed"],["publish","published"]];
   const places=["at the studio","in the library","at university","during the meeting","at the office"];
   const templates=[
-    (n:number)=>{const p=pick(people,n),v=pick(verbs,n+2),sub=pick(subjects,n+3);return {q:`By the time ${p} arrived, the team _____ ${sub}.`,choices:[`has already ${v}d`,`had already ${v}d`,`already ${v}d`],answer:1,why:"Past perfect describes an action completed before another past event."};},
+    (n:number)=>{const p=pick(people,n),v=pick(verbs,n+2),sub=pick(subjects,n+3);return {q:`By the time ${p} arrived, the team _____ ${sub}.`,choices:[`has already ${v[1]}`,`had already ${v[1]}`,`${v[1]} already`],answer:1,why:"Past perfect describes an action completed before another past event."};},
     (n:number)=>{const p=pick(people,n+1),pl=pick(places,n+2);return {q:`If ${p} _____ more free time, they would volunteer ${pl}.`,choices:["have","had","would have"],answer:1,why:"Second conditional: if + past simple, would + base verb."};},
     (n:number)=>{const sub=pick(subjects,n+2);return {q:`${sub.charAt(0).toUpperCase()+sub.slice(1)} _____ by the team this week.`,choices:["is being prepared","is preparing","has prepare"],answer:0,why:"Present continuous passive: am/is/are being + past participle."};},
-    (n:number)=>{const p=pick(people,n+3),v=pick(["postpone","reorganise","improve","reconsider","simplify"],n+1);return {q:`${p} suggested _____ the plan before the deadline.`,choices:[`to ${v}`,v,`${v}ing`],answer:2,why:"Suggest is followed by a gerund (-ing form) in this structure."};},
+    (n:number)=>{const p=pick(people,n+3),v=pick(["postpone","reorganise","improve","reconsider","simplify"],n+1),gerund=v.endsWith("e")&&!v.endsWith("ee")?v.slice(0,-1)+"ing":v+"ing";return {q:`${p} suggested _____ the plan before the deadline.`,choices:[`to ${v}`,v,gerund],answer:2,why:"Suggest is followed by a gerund (-ing form) in this structure."};},
     (n:number)=>{const p=pick(people,n+4);return {q:`${p} has been interested in graphic design _____ three years.`,choices:["since","for","during"],answer:1,why:"Use for with a duration; use since with a starting point."};},
-    (n:number)=>{const p=pick(people,n+5),v=pick(["live","work","study","travel"],n+2);return {q:`She asked him where he _____.`,choices:[v,`did he ${v}`,`does he ${v}`],answer:0,why:"Reported questions use statement word order, not question inversion."};},
+    (n:number)=>{return {q:`She asked him where he _____.`,choices:["lived","did he live","does he live"],answer:0,why:"Reported questions use statement word order, not question inversion."};},
     (n:number)=>{const p=pick(people,n+6);return {q:`Despite _____ tired, ${p} completed the task.`,choices:["feel","feeling","to feel"],answer:1,why:"Despite is followed by a noun phrase or gerund."};},
     (n:number)=>{const p=pick(people,n+7),v=pick(["call","help","invite","remind"],n+3);return {q:`If you had _____ me earlier, I would have ${v} you.`,choices:["tell","told","telling"],answer:1,why:"Third conditional: if + past perfect, would have + past participle."};},
     (n:number)=>{const p=pick(people,n+2);return {q:`This is the designer _____ portfolio impressed the client.`,choices:["who","whose","which"],answer:1,why:"Whose is the possessive relative pronoun."};},
