@@ -105,7 +105,8 @@ const finalDetails = {
 "fluent":{pos:"adjective",root:"From Latin fluere, meaning flow; language flows smoothly.",synonyms:"articulate · smooth · confident",extra:"He is fluent in three languages."},
 "nuance":{pos:"noun",root:"From French nuance, related to a shade or subtle variation.",synonyms:"subtlety · distinction · shade of meaning",extra:"The two expressions are similar, but their nuance is different."}
 };
-const words = [...starterWords, ...newWords, ...additionalWords, ...finalWords];
+const autoVocabulary = (dailyContent.packs as DailyPack[]).flatMap(pack=>pack.vocabulary.map(item=>({word:item.word,meaning:item.meaning,example:item.sentence,collocation:item.collocation,prompt:"Write your own sentence using this expression."})));
+const words = [...starterWords, ...newWords, ...additionalWords, ...finalWords, ...autoVocabulary.filter((item,index,all)=>all.findIndex(other=>other.word===item.word)===index)];
 const wordDetails: Record<string,{pos:string;root:string;synonyms:string;extra:string}> = {
   ...extraDetails,
   ...additionalDetails,
