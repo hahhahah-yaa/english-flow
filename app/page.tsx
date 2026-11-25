@@ -379,7 +379,6 @@ export default function Home() {
   const [done,setDone]=useState<string[]>([]);
   const [answers,setAnswers]=useState<Record<string,number>>({});
   const [revealed,setRevealed]=useState<Record<string,boolean>>({});
-  const [revealed,setRevealed]=useState<Record<string,boolean>>({});
   const [wordIndex,setWordIndex]=useState(0);
   const [recallIndex,setRecallIndex]=useState(0);
   const [recallInput,setRecallInput]=useState("");
