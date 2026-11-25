@@ -17,5 +17,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+      - run: node --check scripts/generate-daily-content.mjs
+      - run: node -e "JSON.parse(require('fs').readFileSync('data/daily-content.json', 'utf8'))"
       - run: npm install
       - run: npm run build
