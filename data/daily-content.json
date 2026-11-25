@@ -1,158 +1,158 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-25T00:00:00.000Z",
+  "updatedAt": "2026-11-25T22:42:59.331Z",
   "packs": [
     {
       "date": "2026-11-25",
       "vocabulary": [
         {
           "id": "v0",
-          "word": "to clarify",
-          "meaning": "to make an idea or statement easier to understand",
-          "sentence": "Could you clarify the main point before we continue?",
-          "collocation": "clarify a point / meaning / requirement",
+          "word": "to accommodate",
+          "meaning": "to provide enough space or make changes so that someone or something can fit",
+          "sentence": "The new layout accommodates both long articles and short interviews.",
+          "collocation": "accommodate a need / request / change",
           "choices": [
-            "to clarify",
-            "to diminish",
-            "to retain",
-            "to allocate"
+            "to accommodate",
+            "compelling",
+            "to consent",
+            "to convert"
           ],
           "answer": 0,
           "why": "The definition and example point to this expression. Notice the collocation as well."
         },
         {
           "id": "v1",
-          "word": "coherent",
-          "meaning": "clear, logical and well connected",
-          "sentence": "The report presents a coherent argument from beginning to end.",
-          "collocation": "coherent argument / structure / explanation",
+          "word": "adjacent",
+          "meaning": "next to or very close to something",
+          "sentence": "The studio is adjacent to the university library.",
+          "collocation": "adjacent to / adjacent building",
           "choices": [
-            "ambiguous",
-            "coherent",
-            "conventional",
-            "feasible"
+            "adjacent",
+            "to comprise",
+            "to consume",
+            "to coordinate"
           ],
-          "answer": 1,
+          "answer": 0,
           "why": "The definition and example point to this expression. Notice the collocation as well."
         },
         {
           "id": "v2",
-          "word": "to convey",
-          "meaning": "to communicate an idea, feeling or message",
-          "sentence": "The colour contrast helps convey a sense of urgency.",
-          "collocation": "convey a message / meaning / emotion",
+          "word": "advocate",
+          "meaning": "to publicly support an idea or way of doing something",
+          "sentence": "Many designers advocate making products easier to repair.",
+          "collocation": "advocate change / a policy / an approach",
           "choices": [
-            "to derive",
-            "to convey",
-            "to preserve",
-            "to anticipate"
+            "advocate",
+            "to conduct",
+            "to convert",
+            "to accommodate"
           ],
-          "answer": 1,
+          "answer": 0,
           "why": "The definition and example point to this expression. Notice the collocation as well."
         },
         {
           "id": "v3",
-          "word": "ambiguous",
-          "meaning": "having more than one possible meaning or not being clear",
-          "sentence": "The headline is ambiguous, so readers may interpret it differently.",
-          "collocation": "ambiguous wording / message / instruction",
+          "word": "compelling",
+          "meaning": "very interesting or convincing, so that it attracts attention",
+          "sentence": "The campaign tells a compelling story about everyday waste.",
+          "collocation": "compelling story / argument / reason",
           "choices": [
-            "accurate",
-            "ambiguous",
-            "reliable",
-            "relevant"
+            "compelling",
+            "to consent",
+            "to coordinate",
+            "adjacent"
           ],
-          "answer": 1,
+          "answer": 0,
           "why": "The definition and example point to this expression. Notice the collocation as well."
         },
         {
           "id": "v4",
-          "word": "to anticipate",
-          "meaning": "to expect something and prepare for it",
-          "sentence": "The team anticipated delays and adjusted the schedule.",
-          "collocation": "anticipate a problem / change / demand",
+          "word": "to comprise",
+          "meaning": "to consist of particular parts or members",
+          "sentence": "The course comprises six modules and a final project.",
+          "collocation": "comprise a whole / several parts",
           "choices": [
-            "to anticipate",
-            "to evaluate",
-            "to justify",
-            "to respond to"
+            "to comprise",
+            "to consume",
+            "to accommodate",
+            "advocate"
           ],
           "answer": 0,
           "why": "The definition and example point to this expression. Notice the collocation as well."
         },
         {
           "id": "v5",
-          "word": "assumption",
-          "meaning": "something believed to be true without proof",
-          "sentence": "The research challenged our assumption about the audience.",
-          "collocation": "make / question / challenge an assumption",
+          "word": "to conduct",
+          "meaning": "to organise and carry out an activity, study or test",
+          "sentence": "The researchers conducted interviews with twelve participants.",
+          "collocation": "conduct research / an interview / a survey",
           "choices": [
-            "evidence",
-            "assumption",
-            "consequence",
-            "perspective"
+            "to conduct",
+            "to convert",
+            "adjacent",
+            "compelling"
           ],
-          "answer": 1,
+          "answer": 0,
           "why": "The definition and example point to this expression. Notice the collocation as well."
         },
         {
           "id": "v6",
-          "word": "to allocate",
-          "meaning": "to give something to a particular person, purpose or task",
-          "sentence": "We allocated more time to testing the prototype.",
-          "collocation": "allocate time / resources / a budget",
+          "word": "to consent",
+          "meaning": "to give permission or agree to something",
+          "sentence": "Participants must consent before their photographs are used.",
+          "collocation": "consent to something / give consent",
           "choices": [
-            "to alter",
-            "to allocate",
-            "to establish",
-            "to estimate"
+            "to consent",
+            "to coordinate",
+            "advocate",
+            "to comprise"
           ],
-          "answer": 1,
+          "answer": 0,
           "why": "The definition and example point to this expression. Notice the collocation as well."
         },
         {
           "id": "v7",
-          "word": "conventional",
-          "meaning": "following ideas or methods that are widely accepted",
-          "sentence": "The studio chose an unconventional format for the campaign.",
-          "collocation": "conventional approach / design / method",
+          "word": "to consume",
+          "meaning": "to use, eat or drink something; to take in information or media",
+          "sentence": "People consume digital content throughout the day.",
+          "collocation": "consume energy / content / resources",
           "choices": [
-            "coherent",
-            "conventional",
-            "diverse",
-            "flexible"
+            "to consume",
+            "to accommodate",
+            "compelling",
+            "to conduct"
           ],
-          "answer": 1,
+          "answer": 0,
           "why": "The definition and example point to this expression. Notice the collocation as well."
         },
         {
           "id": "v8",
-          "word": "to derive",
-          "meaning": "to get or develop something from a source",
-          "sentence": "The visual identity derives from the building's original pattern.",
-          "collocation": "derive from / derive meaning from",
+          "word": "to convert",
+          "meaning": "to change something into a different form or use",
+          "sentence": "The team converted the research findings into a visual guide.",
+          "collocation": "convert something into / convert a file",
           "choices": [
-            "to derive",
-            "to diminish",
-            "to obtain",
-            "to pursue"
+            "to convert",
+            "adjacent",
+            "to comprise",
+            "to consent"
           ],
           "answer": 0,
           "why": "The definition and example point to this expression. Notice the collocation as well."
         },
         {
           "id": "v9",
-          "word": "feasible",
-          "meaning": "possible and practical to do",
-          "sentence": "The proposal is creative, but it may not be feasible within the budget.",
-          "collocation": "feasible option / solution / plan",
+          "word": "to coordinate",
+          "meaning": "to organise people or activities so they work well together",
+          "sentence": "She coordinates the design team and the photographers.",
+          "collocation": "coordinate a team / project / activity",
           "choices": [
-            "accurate",
-            "ambiguous",
-            "feasible",
-            "significant"
+            "to coordinate",
+            "advocate",
+            "to conduct",
+            "to consume"
           ],
-          "answer": 2,
+          "answer": 0,
           "why": "The definition and example point to this expression. Notice the collocation as well."
         }
       ],
