@@ -1,5 +1,320 @@
 {
   "version": 1,
-  "packs": [],
-  "updatedAt": null
+  "updatedAt": "2026-11-25T00:00:00.000Z",
+  "packs": [
+    {
+      "date": "2026-11-25",
+      "vocabulary": [
+        {
+          "id": "v0",
+          "word": "to clarify",
+          "meaning": "to make an idea or statement easier to understand",
+          "sentence": "Could you clarify the main point before we continue?",
+          "collocation": "clarify a point / meaning / requirement",
+          "choices": [
+            "to clarify",
+            "to diminish",
+            "to retain",
+            "to allocate"
+          ],
+          "answer": 0,
+          "why": "The definition and example point to this expression. Notice the collocation as well."
+        },
+        {
+          "id": "v1",
+          "word": "coherent",
+          "meaning": "clear, logical and well connected",
+          "sentence": "The report presents a coherent argument from beginning to end.",
+          "collocation": "coherent argument / structure / explanation",
+          "choices": [
+            "ambiguous",
+            "coherent",
+            "conventional",
+            "feasible"
+          ],
+          "answer": 1,
+          "why": "The definition and example point to this expression. Notice the collocation as well."
+        },
+        {
+          "id": "v2",
+          "word": "to convey",
+          "meaning": "to communicate an idea, feeling or message",
+          "sentence": "The colour contrast helps convey a sense of urgency.",
+          "collocation": "convey a message / meaning / emotion",
+          "choices": [
+            "to derive",
+            "to convey",
+            "to preserve",
+            "to anticipate"
+          ],
+          "answer": 1,
+          "why": "The definition and example point to this expression. Notice the collocation as well."
+        },
+        {
+          "id": "v3",
+          "word": "ambiguous",
+          "meaning": "having more than one possible meaning or not being clear",
+          "sentence": "The headline is ambiguous, so readers may interpret it differently.",
+          "collocation": "ambiguous wording / message / instruction",
+          "choices": [
+            "accurate",
+            "ambiguous",
+            "reliable",
+            "relevant"
+          ],
+          "answer": 1,
+          "why": "The definition and example point to this expression. Notice the collocation as well."
+        },
+        {
+          "id": "v4",
+          "word": "to anticipate",
+          "meaning": "to expect something and prepare for it",
+          "sentence": "The team anticipated delays and adjusted the schedule.",
+          "collocation": "anticipate a problem / change / demand",
+          "choices": [
+            "to anticipate",
+            "to evaluate",
+            "to justify",
+            "to respond to"
+          ],
+          "answer": 0,
+          "why": "The definition and example point to this expression. Notice the collocation as well."
+        },
+        {
+          "id": "v5",
+          "word": "assumption",
+          "meaning": "something believed to be true without proof",
+          "sentence": "The research challenged our assumption about the audience.",
+          "collocation": "make / question / challenge an assumption",
+          "choices": [
+            "evidence",
+            "assumption",
+            "consequence",
+            "perspective"
+          ],
+          "answer": 1,
+          "why": "The definition and example point to this expression. Notice the collocation as well."
+        },
+        {
+          "id": "v6",
+          "word": "to allocate",
+          "meaning": "to give something to a particular person, purpose or task",
+          "sentence": "We allocated more time to testing the prototype.",
+          "collocation": "allocate time / resources / a budget",
+          "choices": [
+            "to alter",
+            "to allocate",
+            "to establish",
+            "to estimate"
+          ],
+          "answer": 1,
+          "why": "The definition and example point to this expression. Notice the collocation as well."
+        },
+        {
+          "id": "v7",
+          "word": "conventional",
+          "meaning": "following ideas or methods that are widely accepted",
+          "sentence": "The studio chose an unconventional format for the campaign.",
+          "collocation": "conventional approach / design / method",
+          "choices": [
+            "coherent",
+            "conventional",
+            "diverse",
+            "flexible"
+          ],
+          "answer": 1,
+          "why": "The definition and example point to this expression. Notice the collocation as well."
+        },
+        {
+          "id": "v8",
+          "word": "to derive",
+          "meaning": "to get or develop something from a source",
+          "sentence": "The visual identity derives from the building's original pattern.",
+          "collocation": "derive from / derive meaning from",
+          "choices": [
+            "to derive",
+            "to diminish",
+            "to obtain",
+            "to pursue"
+          ],
+          "answer": 0,
+          "why": "The definition and example point to this expression. Notice the collocation as well."
+        },
+        {
+          "id": "v9",
+          "word": "feasible",
+          "meaning": "possible and practical to do",
+          "sentence": "The proposal is creative, but it may not be feasible within the budget.",
+          "collocation": "feasible option / solution / plan",
+          "choices": [
+            "accurate",
+            "ambiguous",
+            "feasible",
+            "significant"
+          ],
+          "answer": 2,
+          "why": "The definition and example point to this expression. Notice the collocation as well."
+        }
+      ],
+      "grammar": [
+        {
+          "q": "By the time the meeting started, Maya _____ the report.",
+          "choices": [
+            "has finished",
+            "had finished",
+            "was finish"
+          ],
+          "answer": 1,
+          "why": "Use the past perfect for an action completed before another past event.",
+          "id": "g0"
+        },
+        {
+          "q": "If I _____ more time, I would take an advanced writing course.",
+          "choices": [
+            "have",
+            "had",
+            "would have"
+          ],
+          "answer": 1,
+          "why": "The second conditional uses if + past simple, followed by would + base verb.",
+          "id": "g1"
+        },
+        {
+          "q": "The final design _____ by the client tomorrow.",
+          "choices": [
+            "will approve",
+            "will be approved",
+            "will have approving"
+          ],
+          "answer": 1,
+          "why": "The future passive is will be + past participle.",
+          "id": "g2"
+        },
+        {
+          "q": "The tutor recommended _____ the paragraph aloud.",
+          "choices": [
+            "to read",
+            "reading",
+            "read"
+          ],
+          "answer": 1,
+          "why": "Recommend is commonly followed by a gerund when no object is used.",
+          "id": "g3"
+        },
+        {
+          "q": "I wish I _____ more carefully before sending that email.",
+          "choices": [
+            "checked",
+            "had checked",
+            "would check"
+          ],
+          "answer": 1,
+          "why": "Wish + past perfect expresses regret about a past action.",
+          "id": "g4"
+        },
+        {
+          "q": "The team has worked on this project _____ March.",
+          "choices": [
+            "for",
+            "since",
+            "during"
+          ],
+          "answer": 1,
+          "why": "Use since with the starting point of a period.",
+          "id": "g5"
+        },
+        {
+          "q": "The new website _____ at the moment.",
+          "choices": [
+            "is being tested",
+            "is testing",
+            "has tested"
+          ],
+          "answer": 0,
+          "why": "Present continuous passive: am/is/are being + past participle.",
+          "id": "g6"
+        },
+        {
+          "q": "Despite _____ several problems, the team met the deadline.",
+          "choices": [
+            "face",
+            "facing",
+            "to face"
+          ],
+          "answer": 1,
+          "why": "Despite is followed by a noun or gerund, not a finite clause.",
+          "id": "g7"
+        },
+        {
+          "q": "She asked me where I _____ the reference image.",
+          "choices": [
+            "had found",
+            "did I find",
+            "have I found"
+          ],
+          "answer": 0,
+          "why": "Reported questions use statement word order; the past perfect can show an earlier action.",
+          "id": "g8"
+        },
+        {
+          "q": "If they had tested the prototype, they _____ the problem earlier.",
+          "choices": [
+            "would notice",
+            "would have noticed",
+            "noticed"
+          ],
+          "answer": 1,
+          "why": "The third conditional uses if + past perfect and would have + past participle.",
+          "id": "g9"
+        }
+      ],
+      "reading": {
+        "title": "Designing with evidence",
+        "level": "B1–B2",
+        "text": "A successful project rarely depends on one clever idea. It develops through observation, testing and decisions that respond to real needs. For this reason, teams should examine the context before choosing a solution. A method that works for one audience may create difficulties for another. Small tests can reveal problems that are difficult to notice from inside the project. They also give people a chance to explain what they actually need. It is important to distinguish between an assumption and evidence. An assumption may be a useful starting point, but it should not replace observation. The strongest approach is therefore flexible: it keeps a clear purpose while remaining open to new evidence.",
+        "questions": [
+          {
+            "q": "What is the main idea of the passage?",
+            "choices": [
+              "A thoughtful process matters more than a single quick idea.",
+              "The most complex solution is always the best.",
+              "Research should happen only after a project is finished."
+            ],
+            "answer": 0,
+            "why": "The passage focuses on context, evidence, testing and thoughtful decisions."
+          },
+          {
+            "q": "Why are small tests useful?",
+            "choices": [
+              "They remove the need for research.",
+              "They can reveal problems and real user needs.",
+              "They guarantee that the first idea will succeed."
+            ],
+            "answer": 1,
+            "why": "Testing reveals issues that may be hard to notice otherwise."
+          },
+          {
+            "q": "What does the writer suggest about assumptions?",
+            "choices": [
+              "They should replace observation.",
+              "They are always incorrect.",
+              "They can be a starting point, but should be checked against evidence."
+            ],
+            "answer": 2,
+            "why": "The passage distinguishes assumptions from evidence."
+          },
+          {
+            "q": "Which statement best matches the conclusion?",
+            "choices": [
+              "Progress depends on using information meaningfully.",
+              "Progress means collecting as much material as possible.",
+              "Appearance is the only measure of quality."
+            ],
+            "answer": 0,
+            "why": "The conclusion emphasises evidence and a flexible, purposeful process."
+          }
+        ]
+      }
+    }
+  ]
 }
