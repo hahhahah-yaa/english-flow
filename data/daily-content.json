@@ -27,12 +27,12 @@
           "sentence": "The studio is adjacent to the university library.",
           "collocation": "adjacent to / adjacent building",
           "choices": [
-            "adjacent",
             "to comprise",
             "to consume",
-            "to coordinate"
+            "to coordinate",
+            "adjacent"
           ],
-          "answer": 0,
+          "answer": 3,
           "why": "The definition and example point to this expression. Notice the collocation as well."
         },
         {
@@ -42,12 +42,12 @@
           "sentence": "Many designers advocate making products easier to repair.",
           "collocation": "advocate change / a policy / an approach",
           "choices": [
-            "advocate",
-            "to conduct",
             "to convert",
-            "to accommodate"
+            "to accommodate",
+            "advocate",
+            "to conduct"
           ],
-          "answer": 0,
+          "answer": 2,
           "why": "The definition and example point to this expression. Notice the collocation as well."
         },
         {
@@ -57,12 +57,12 @@
           "sentence": "The campaign tells a compelling story about everyday waste.",
           "collocation": "compelling story / argument / reason",
           "choices": [
+            "adjacent",
             "compelling",
             "to consent",
-            "to coordinate",
-            "adjacent"
+            "to coordinate"
           ],
-          "answer": 0,
+          "answer": 1,
           "why": "The definition and example point to this expression. Notice the collocation as well."
         },
         {
@@ -87,12 +87,12 @@
           "sentence": "The researchers conducted interviews with twelve participants.",
           "collocation": "conduct research / an interview / a survey",
           "choices": [
-            "to conduct",
             "to convert",
             "adjacent",
-            "compelling"
+            "compelling",
+            "to conduct"
           ],
-          "answer": 0,
+          "answer": 3,
           "why": "The definition and example point to this expression. Notice the collocation as well."
         },
         {
@@ -102,12 +102,12 @@
           "sentence": "Participants must consent before their photographs are used.",
           "collocation": "consent to something / give consent",
           "choices": [
-            "to consent",
-            "to coordinate",
             "advocate",
-            "to comprise"
+            "to comprise",
+            "to consent",
+            "to coordinate"
           ],
-          "answer": 0,
+          "answer": 2,
           "why": "The definition and example point to this expression. Notice the collocation as well."
         },
         {
@@ -117,12 +117,12 @@
           "sentence": "People consume digital content throughout the day.",
           "collocation": "consume energy / content / resources",
           "choices": [
+            "to conduct",
             "to consume",
             "to accommodate",
-            "compelling",
-            "to conduct"
+            "compelling"
           ],
-          "answer": 0,
+          "answer": 1,
           "why": "The definition and example point to this expression. Notice the collocation as well."
         },
         {
@@ -147,12 +147,12 @@
           "sentence": "She coordinates the design team and the photographers.",
           "collocation": "coordinate a team / project / activity",
           "choices": [
-            "to coordinate",
             "advocate",
             "to conduct",
-            "to consume"
+            "to consume",
+            "to coordinate"
           ],
-          "answer": 0,
+          "answer": 3,
           "why": "The definition and example point to this expression. Notice the collocation as well."
         }
       ],
