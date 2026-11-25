@@ -183,7 +183,7 @@ export default function Home() {
   useEffect(()=>{
     try{
       const raw=localStorage.getItem("english-flow-progress");
-      if(raw){const saved=JSON.parse(raw); if(saved.date===todayKey()){setDone(saved.done||[]);setKnownWords(saved.knownWords||[]);setMistakes(saved.mistakes||[]);setStreak(saved.streak||0);setReviewItems(saved.reviewItems||[]);setWriting(saved.writing||"");setSpeakingNotes(saved.speakingNotes||"");} else {setDone([]);setKnownWords(saved.knownWords||[]);setMistakes(saved.mistakes||[]);setStreak(saved.streak||0);}}
+      if(raw){const saved=JSON.parse(raw); if(saved.date===todayKey()){setDone(saved.done||[]);setKnownWords(saved.knownWords||[]);setMistakes(saved.mistakes||[]);setStreak(saved.streak||0);setReviewItems(saved.reviewItems||[]);setWriting(saved.writing||"");setSpeakingNotes(saved.speakingNotes||"");} else {setDone([]);setKnownWords(saved.knownWords||[]);setMistakes(saved.mistakes||[]);setStreak(saved.streak||0);setReviewItems(saved.reviewItems||[]);}}
     }catch{}
     setLoaded(true);
   },[]);
