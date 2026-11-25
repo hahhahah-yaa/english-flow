@@ -195,7 +195,9 @@ const makeDailyReading = (seed:number,themeIndex:number) => {
   const questions=[
     {q:"Which statement best expresses the main idea of the passage?",...withAnswer(mainIdeas[themeIndex],["It explains why one solution is suitable for every situation.","It argues that the topic is not worth considering."],seed+1)},
     {q:"Which example is mentioned in the passage?",...withAnswer(sentences[1],detailDistractors[themeIndex].filter(x=>x!==sentences[1]),seed+2)},
-    {q:"What is the purpose of the sentence beginning with a contrast word?",...withAnswer("It introduces a limitation or a different point of view.",["It gives a chronological sequence of events.","It repeats the opening sentence without adding information."],seed+3)}
+    {q:"What is the purpose of the sentence beginning with a contrast word?",...withAnswer("It introduces a limitation or a different point of view.",["It gives a chronological sequence of events.","It repeats the opening sentence without adding information."],seed+3)},
+    {q:"Which word best describes the writer's approach?",...withAnswer("Balanced: the writer considers both benefits and limitations.",["Completely negative: the writer rejects every possible solution.","Uncritical: the writer presents only advantages."],seed+4)},
+    {q:"Which conclusion is best supported by the passage?",...withAnswer(["Good urban design should respond to how residents use shared spaces.","Active learning requires learners to collect as many resources as possible.","Creative work improves when every decision is fixed in advance.","Flexible work is successful only when everyone follows the same schedule."][themeIndex],["The topic has no practical effect on everyday life.","One solution will work equally well in every situation."],seed+5)}
   ];
   return {text:sentences.join(" "),questions};
 };
