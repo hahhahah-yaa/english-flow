@@ -342,7 +342,7 @@ const makeDailyReading = (seed:number,themeIndex:number) => {
 const listeningScript = "Many people believe that productivity means doing more in less time. But constant activity can make it harder to think clearly. One useful strategy is to divide your work into focused sessions and take short breaks between them. During a break, avoid switching to another demanding task. Instead, stand up, get some water or look outside. The aim is not to work endlessly, but to protect your attention so that the time you spend working is more effective.";
 
 const makeDailyGrammar = (seed:number) => {
-  const pick=(list:string[],n:number)=>list[((n%list.length)+list.length)%list.length];
+  const pick=<T,>(list:T[],n:number):T=>list[((n%list.length)+list.length)%list.length];
   const people=["Maya","Leo","Sofia","Daniel","Amira","Luca","Eva","Noah"];
   const subjects=["the presentation","the campaign","the new website","the exhibition","the report","the project"];
   const verbs=[["finish","finished"],["submit","submitted"],["prepare","prepared"],["design","designed"],["review","reviewed"],["publish","published"]];
