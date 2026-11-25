@@ -57,14 +57,14 @@ export default function Home() {
   useEffect(()=>{
     try{
       const raw=localStorage.getItem("english-flow-progress");
-      if(raw){const saved=JSON.parse(raw); if(saved.date===todayKey()){setDone(saved.done||[]);setKnownWords(saved.knownWords||[]);setStreak(saved.streak||0);} else {setDone([]);setKnownWords(saved.knownWords||[]);setStreak(saved.streak||0);}}
+      if(raw){const saved=JSON.parse(raw); if(saved.date===todayKey()){setDone(saved.done||[]);setKnownWords(saved.knownWords||[]);setStreak(saved.streak||0);setWriting(saved.writing||"");setSpeakingNotes(saved.speakingNotes||"");} else {setDone([]);setKnownWords(saved.knownWords||[]);setStreak(saved.streak||0);}}
     }catch{}
     setLoaded(true);
   },[]);
   useEffect(()=>{
     if(!loaded)return;
-    try{localStorage.setItem("english-flow-progress",JSON.stringify({date:todayKey(),done,knownWords,streak}));}catch{}
-  },[loaded,done,knownWords,streak]);
+    try{localStorage.setItem("english-flow-progress",JSON.stringify({date:todayKey(),done,knownWords,streak,writing,speakingNotes}));}catch{}
+  },[loaded,done,knownWords,streak,writing,speakingNotes]);
   const markDone=(id:string)=>setDone(old=>old.includes(id)?old:[...old,id]);
   const nav:ModuleName[]=["Home","Grammar","Vocabulary","Reading","Listening","Writing","Speaking","Exam practice","My progress"];
   const start=(moduleName:ModuleName)=>{setActive(moduleName);window.scrollTo({top:0,behavior:"smooth"});};
