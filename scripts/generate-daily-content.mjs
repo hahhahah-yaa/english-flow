@@ -13,6 +13,16 @@ const hash = (value) => [...value].reduce((n, c) => (n * 31 + c.charCodeAt(0)) >
 const pick = (items, seed, offset = 0) => items[(seed + offset) % items.length];
 const shuffle = (items, seed) => items.map((v, i) => ({v, k: hash(seed + ":" + i + ":" + v)})).sort((a,b)=>a.k-b.k).map(x=>x.v);
 const seed = hash(today);
+let store = { version: 1, packs: [] };
+if (fs.existsSync(output)) {
+  try { store = JSON.parse(fs.readFileSync(output,"utf8")); } catch { /* rebuild a clean store */ }
+}
+if (!Array.isArray(store.packs)) store.packs = [];
+if (store.packs.some(pack => pack.date === today)) {
+  console.log("A daily pack already exists for " + today + "; nothing to do.");
+  process.exit(0);
+}
+
 
 const vocabulary = [
   ["to accommodate","to provide enough space or make changes so that someone or something can fit","The new layout accommodates both long articles and short interviews.","accommodate a need / request / change"],
@@ -90,7 +100,13 @@ const readingEndings = [
   "This suggests that progress comes not from collecting more material, but from using what we learn in a meaningful way."
 ];
 
-const selectedWords = Array.from({length:10},(_,i)=>vocabulary[(seed + i*7) % vocabulary.length]);
+const selectedWords = (() => {
+  const alreadyUsed = new Set(store.packs.flatMap(pack => (pack.vocabulary || []).map(item => item.word)));
+  const unused = vocabulary.filter(item => !alreadyUsed.has(item[0]));
+  const source = unused.length ? unused : vocabulary;
+  const count = Math.min(10, source.length);
+  return Array.from({length:count},(_,i)=>source[(seed + i*7) % source.length]);
+})();
 const vocabQuestions = selectedWords.map((item,i)=>{
   const distractors = shuffle(vocabulary.filter(x=>x[0]!==item[0]).map(x=>x[0]),seed+i).slice(0,3);
   const choices = shuffle([item[0],...distractors],seed+i*11);
@@ -114,15 +130,6 @@ const reading = {
   ]
 };
 
-let store = { version: 1, packs: [] };
-if (fs.existsSync(output)) {
-  try { store = JSON.parse(fs.readFileSync(output,"utf8")); } catch { /* rebuild a clean store */ }
-}
-if (!Array.isArray(store.packs)) store.packs = [];
-if (store.packs.some(pack => pack.date === today)) {
-  console.log("A daily pack already exists for " + today + "; nothing to do.");
-  process.exit(0);
-}
 store.packs.push({date:today, vocabulary:vocabQuestions, grammar:grammarQuestions, reading});
 store.packs = store.packs.slice(-90);
 store.updatedAt = new Date().toISOString();
