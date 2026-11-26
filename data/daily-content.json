@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-25T22:42:59.331Z",
+  "updatedAt": "2026-11-26T05:17:49.989Z",
   "packs": [
     {
       "date": "2026-11-25",
@@ -312,6 +312,320 @@
             ],
             "answer": 0,
             "why": "The conclusion emphasises evidence and a flexible, purposeful process."
+          }
+        ]
+      }
+    },
+    {
+      "date": "2026-11-26",
+      "vocabulary": [
+        {
+          "id": "v0",
+          "word": "to influence",
+          "meaning": "to affect the way someone thinks, behaves or makes a decision",
+          "sentence": "Colour can influence how people perceive a brand.",
+          "collocation": "influence a decision / behaviour / opinion",
+          "choices": [
+            "compelling",
+            "to dominate",
+            "to coordinate",
+            "to influence"
+          ],
+          "answer": 3,
+          "why": "The definition and sentence point to this expression. Notice the collocation as well."
+        },
+        {
+          "id": "v1",
+          "word": "crucial",
+          "meaning": "extremely important because it affects the result",
+          "sentence": "Clear communication is crucial during a group project.",
+          "collocation": "crucial role / factor / decision",
+          "choices": [
+            "to monitor",
+            "to decline",
+            "crucial",
+            "to dominate"
+          ],
+          "answer": 2,
+          "why": "The definition and sentence point to this expression. Notice the collocation as well."
+        },
+        {
+          "id": "v2",
+          "word": "to eliminate",
+          "meaning": "to remove or completely get rid of something",
+          "sentence": "We removed repeated steps to eliminate unnecessary effort.",
+          "collocation": "eliminate a risk / error / step",
+          "choices": [
+            "to eliminate",
+            "to enable",
+            "to exceed",
+            "to proceed"
+          ],
+          "answer": 0,
+          "why": "The definition and sentence point to this expression. Notice the collocation as well."
+        },
+        {
+          "id": "v3",
+          "word": "to monitor",
+          "meaning": "to watch or check something over a period of time",
+          "sentence": "The team monitored how users moved through the website.",
+          "collocation": "monitor progress / performance / activity",
+          "choices": [
+            "to engage",
+            "to monitor",
+            "to conduct",
+            "to regulate"
+          ],
+          "answer": 1,
+          "why": "The definition and sentence point to this expression. Notice the collocation as well."
+        },
+        {
+          "id": "v4",
+          "word": "to decline",
+          "meaning": "to become smaller, weaker or less; to politely refuse",
+          "sentence": "The number of printed copies declined after the campaign moved online.",
+          "collocation": "decline steadily / decline an invitation",
+          "choices": [
+            "to comprise",
+            "to consent",
+            "to consume",
+            "to decline"
+          ],
+          "answer": 3,
+          "why": "The definition and sentence point to this expression. Notice the collocation as well."
+        },
+        {
+          "id": "v5",
+          "word": "to enable",
+          "meaning": "to make it possible for someone to do something",
+          "sentence": "The new tool enables users to compare different versions.",
+          "collocation": "enable someone to do something / enable access",
+          "choices": [
+            "to enable",
+            "to proceed",
+            "to accommodate",
+            "to prioritise"
+          ],
+          "answer": 0,
+          "why": "The definition and sentence point to this expression. Notice the collocation as well."
+        },
+        {
+          "id": "v6",
+          "word": "to prioritise",
+          "meaning": "to decide which things are most important and deal with them first",
+          "sentence": "When time is limited, prioritise the tasks with the greatest impact.",
+          "collocation": "prioritise tasks / needs / goals",
+          "choices": [
+            "to display",
+            "to influence",
+            "to prioritise",
+            "to represent"
+          ],
+          "answer": 2,
+          "why": "The definition and sentence point to this expression. Notice the collocation as well."
+        },
+        {
+          "id": "v7",
+          "word": "to demonstrate",
+          "meaning": "to show clearly how something works or that something is true",
+          "sentence": "The prototype demonstrates how the new interface works.",
+          "collocation": "demonstrate a skill / process / result",
+          "choices": [
+            "to monitor",
+            "to demonstrate",
+            "to implement",
+            "crucial"
+          ],
+          "answer": 1,
+          "why": "The definition and sentence point to this expression. Notice the collocation as well."
+        },
+        {
+          "id": "v8",
+          "word": "to engage",
+          "meaning": "to attract and hold someone's attention or involve them in an activity",
+          "sentence": "The interactive installation engages visitors through movement.",
+          "collocation": "engage an audience / users / participants",
+          "choices": [
+            "to engage",
+            "crucial",
+            "compelling",
+            "to proceed"
+          ],
+          "answer": 0,
+          "why": "The definition and sentence point to this expression. Notice the collocation as well."
+        },
+        {
+          "id": "v9",
+          "word": "to proceed",
+          "meaning": "to continue or move forward, especially after a decision",
+          "sentence": "After reviewing the feedback, the team proceeded with the redesign.",
+          "collocation": "proceed with / proceed to do something",
+          "choices": [
+            "to proceed",
+            "to distribute",
+            "to exceed",
+            "to exclude"
+          ],
+          "answer": 0,
+          "why": "The definition and sentence point to this expression. Notice the collocation as well."
+        }
+      ],
+      "grammar": [
+        {
+          "id": "g0",
+          "q": "The more carefully you edit, _____ your writing becomes.",
+          "choices": [
+            "clearer",
+            "the clearer",
+            "the clearest"
+          ],
+          "answer": 1,
+          "why": "Use the + comparative in both parts of the correlative comparative structure."
+        },
+        {
+          "id": "g1",
+          "q": "The designer, _____ portfolio we reviewed, has joined the studio.",
+          "choices": [
+            "whose",
+            "who",
+            "which"
+          ],
+          "answer": 0,
+          "why": "Whose links the person to something they possess or are associated with."
+        },
+        {
+          "id": "g2",
+          "q": "It was _____ useful explanation that everyone understood the rule.",
+          "choices": [
+            "such a",
+            "too",
+            "so"
+          ],
+          "answer": 0,
+          "why": "Such a + adjective + singular countable noun is the correct structure."
+        },
+        {
+          "id": "g3",
+          "q": "The final design _____ by the client tomorrow.",
+          "choices": [
+            "will approve",
+            "will have approving",
+            "will be approved"
+          ],
+          "answer": 2,
+          "why": "The future passive is will be + past participle."
+        },
+        {
+          "id": "g4",
+          "q": "The team has worked on this project _____ March.",
+          "choices": [
+            "during",
+            "since",
+            "for"
+          ],
+          "answer": 1,
+          "why": "Use since with the starting point of a period."
+        },
+        {
+          "id": "g5",
+          "q": "She asked me where I _____ the reference image.",
+          "choices": [
+            "had found",
+            "have I found",
+            "did I find"
+          ],
+          "answer": 0,
+          "why": "Reported questions use statement word order; the past perfect can show an earlier action."
+        },
+        {
+          "id": "g6",
+          "q": "You _____ have printed all those copies; the meeting was cancelled.",
+          "choices": [
+            "mustn't",
+            "couldn't",
+            "needn't"
+          ],
+          "answer": 2,
+          "why": "Needn't have + past participle means the action happened but was unnecessary."
+        },
+        {
+          "id": "g7",
+          "q": "I am not used to _____ in front of a large audience.",
+          "choices": [
+            "spoke",
+            "speaking",
+            "speak"
+          ],
+          "answer": 1,
+          "why": "Be used to is followed by a noun or gerund because to is a preposition here."
+        },
+        {
+          "id": "g8",
+          "q": "The lights are off and the door is locked. They _____ left already.",
+          "choices": [
+            "must have",
+            "would",
+            "should"
+          ],
+          "answer": 0,
+          "why": "Must have + past participle expresses a strong deduction about the past."
+        },
+        {
+          "id": "g9",
+          "q": "By the time the meeting started, Maya _____ the report.",
+          "choices": [
+            "has finished",
+            "was finish",
+            "had finished"
+          ],
+          "answer": 2,
+          "why": "Use the past perfect for an action completed before another past event."
+        }
+      ],
+      "reading": {
+        "title": "Small changes, lasting effects",
+        "level": "B1–B2",
+        "text": "Creative constraints can feel restrictive at first. Yet a clear limit may help a team focus on the choices that matter most. A practical solution does not have to be the most complicated one. It needs to solve the right problem and remain understandable to the people who use it. Small tests can reveal problems that are difficult to notice from inside the project. They also give people a chance to explain what they actually need. In the end, quality is not simply a matter of appearance; it is the result of thoughtful choices and continuous evaluation.",
+        "questions": [
+          {
+            "q": "What is the main idea of the passage?",
+            "choices": [
+              "A thoughtful process matters more than a single quick idea.",
+              "The most complex solution is always the best.",
+              "Research should happen only after a project is finished."
+            ],
+            "answer": 0,
+            "why": "The passage focuses on context, evidence, testing and thoughtful decisions."
+          },
+          {
+            "q": "Why are small tests useful?",
+            "choices": [
+              "They remove the need for research.",
+              "They can reveal problems and real user needs.",
+              "They guarantee that the first idea will succeed."
+            ],
+            "answer": 1,
+            "why": "The text explains that testing reveals issues that may be hard to notice otherwise."
+          },
+          {
+            "q": "What does the writer suggest about assumptions?",
+            "choices": [
+              "They should replace observation.",
+              "They are always incorrect.",
+              "They can be a starting point, but should be checked against evidence."
+            ],
+            "answer": 2,
+            "why": "The passage explicitly distinguishes assumptions from evidence."
+          },
+          {
+            "q": "Which statement best matches the conclusion?",
+            "choices": [
+              "Progress depends on using information meaningfully.",
+              "Progress means collecting as much material as possible.",
+              "Appearance is the only measure of quality."
+            ],
+            "answer": 0,
+            "why": "The final sentence emphasises meaningful application rather than collecting."
           }
         ]
       }
