@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-26T05:17:49.989Z",
+  "updatedAt": "2026-11-27T05:18:48.441Z",
   "packs": [
     {
       "date": "2026-11-25",
@@ -586,6 +586,320 @@
         "title": "Small changes, lasting effects",
         "level": "B1–B2",
         "text": "Creative constraints can feel restrictive at first. Yet a clear limit may help a team focus on the choices that matter most. A practical solution does not have to be the most complicated one. It needs to solve the right problem and remain understandable to the people who use it. Small tests can reveal problems that are difficult to notice from inside the project. They also give people a chance to explain what they actually need. In the end, quality is not simply a matter of appearance; it is the result of thoughtful choices and continuous evaluation.",
+        "questions": [
+          {
+            "q": "What is the main idea of the passage?",
+            "choices": [
+              "A thoughtful process matters more than a single quick idea.",
+              "The most complex solution is always the best.",
+              "Research should happen only after a project is finished."
+            ],
+            "answer": 0,
+            "why": "The passage focuses on context, evidence, testing and thoughtful decisions."
+          },
+          {
+            "q": "Why are small tests useful?",
+            "choices": [
+              "They remove the need for research.",
+              "They can reveal problems and real user needs.",
+              "They guarantee that the first idea will succeed."
+            ],
+            "answer": 1,
+            "why": "The text explains that testing reveals issues that may be hard to notice otherwise."
+          },
+          {
+            "q": "What does the writer suggest about assumptions?",
+            "choices": [
+              "They should replace observation.",
+              "They are always incorrect.",
+              "They can be a starting point, but should be checked against evidence."
+            ],
+            "answer": 2,
+            "why": "The passage explicitly distinguishes assumptions from evidence."
+          },
+          {
+            "q": "Which statement best matches the conclusion?",
+            "choices": [
+              "Progress depends on using information meaningfully.",
+              "Progress means collecting as much material as possible.",
+              "Appearance is the only measure of quality."
+            ],
+            "answer": 0,
+            "why": "The final sentence emphasises meaningful application rather than collecting."
+          }
+        ]
+      }
+    },
+    {
+      "date": "2026-11-27",
+      "vocabulary": [
+        {
+          "id": "v0",
+          "word": "to exceed",
+          "meaning": "to be greater or more than a limit or expectation",
+          "sentence": "The final cost should not exceed the agreed budget.",
+          "collocation": "exceed expectations / a limit / a budget",
+          "choices": [
+            "to recover",
+            "to monitor",
+            "to exceed",
+            "to accommodate"
+          ],
+          "answer": 2,
+          "why": "The definition and sentence point to this expression. Notice the collocation as well."
+        },
+        {
+          "id": "v1",
+          "word": "to display",
+          "meaning": "to show information or an object so that people can see it",
+          "sentence": "The website displays the most relevant projects first.",
+          "collocation": "display information / work / an image",
+          "choices": [
+            "to proceed",
+            "to enable",
+            "to exceed",
+            "to display"
+          ],
+          "answer": 3,
+          "why": "The definition and sentence point to this expression. Notice the collocation as well."
+        },
+        {
+          "id": "v2",
+          "word": "to regulate",
+          "meaning": "to control an activity or process through rules",
+          "sentence": "Some countries regulate how companies collect personal data.",
+          "collocation": "regulate an industry / process / activity",
+          "choices": [
+            "to conduct",
+            "to regulate",
+            "to engage",
+            "to exclude"
+          ],
+          "answer": 1,
+          "why": "The definition and sentence point to this expression. Notice the collocation as well."
+        },
+        {
+          "id": "v3",
+          "word": "to exclude",
+          "meaning": "to leave someone or something out",
+          "sentence": "A good design process should not exclude people with different needs.",
+          "collocation": "exclude someone from / exclude an option",
+          "choices": [
+            "to consent",
+            "to comprise",
+            "to consume",
+            "to exclude"
+          ],
+          "answer": 3,
+          "why": "The definition and sentence point to this expression. Notice the collocation as well."
+        },
+        {
+          "id": "v4",
+          "word": "to distribute",
+          "meaning": "to give or deliver something to a number of people or places",
+          "sentence": "The organisation distributed the guide to local schools.",
+          "collocation": "distribute materials / copies / information",
+          "choices": [
+            "to prioritise",
+            "to distribute",
+            "to proceed",
+            "to accommodate"
+          ],
+          "answer": 1,
+          "why": "The definition and sentence point to this expression. Notice the collocation as well."
+        },
+        {
+          "id": "v5",
+          "word": "to represent",
+          "meaning": "to show, describe or act on behalf of someone or something",
+          "sentence": "The symbol represents the connection between the two communities.",
+          "collocation": "represent an idea / group / value",
+          "choices": [
+            "to influence",
+            "to display",
+            "to prioritise",
+            "to represent"
+          ],
+          "answer": 3,
+          "why": "The definition and sentence point to this expression. Notice the collocation as well."
+        },
+        {
+          "id": "v6",
+          "word": "to implement",
+          "meaning": "to put a plan, decision or system into action",
+          "sentence": "The school implemented a new feedback system.",
+          "collocation": "implement a strategy / policy / change",
+          "choices": [
+            "to detect",
+            "to monitor",
+            "to implement",
+            "crucial"
+          ],
+          "answer": 2,
+          "why": "The definition and sentence point to this expression. Notice the collocation as well."
+        },
+        {
+          "id": "v7",
+          "word": "to dominate",
+          "meaning": "to be the most important or noticeable feature",
+          "sentence": "A large headline dominates the poster.",
+          "collocation": "dominate a market / discussion / layout",
+          "choices": [
+            "to dominate",
+            "compelling",
+            "crucial",
+            "to proceed"
+          ],
+          "answer": 0,
+          "why": "The definition and sentence point to this expression. Notice the collocation as well."
+        },
+        {
+          "id": "v8",
+          "word": "to detect",
+          "meaning": "to notice or discover something that is difficult to see",
+          "sentence": "The user test helped detect a confusing step in the process.",
+          "collocation": "detect a problem / change / pattern",
+          "choices": [
+            "to detect",
+            "to prioritise",
+            "to exclude",
+            "crucial"
+          ],
+          "answer": 0,
+          "why": "The definition and sentence point to this expression. Notice the collocation as well."
+        },
+        {
+          "id": "v9",
+          "word": "to recover",
+          "meaning": "to return to a normal or better condition after difficulty",
+          "sentence": "It took the project a week to recover from the technical problem.",
+          "collocation": "recover from a setback / illness / loss",
+          "choices": [
+            "to accommodate",
+            "to recover",
+            "to influence",
+            "to dominate"
+          ],
+          "answer": 1,
+          "why": "The definition and sentence point to this expression. Notice the collocation as well."
+        }
+      ],
+      "grammar": [
+        {
+          "id": "g0",
+          "q": "I am not used to _____ in front of a large audience.",
+          "choices": [
+            "speak",
+            "speaking",
+            "spoke"
+          ],
+          "answer": 1,
+          "why": "Be used to is followed by a noun or gerund because to is a preposition here."
+        },
+        {
+          "id": "g1",
+          "q": "The lights are off and the door is locked. They _____ left already.",
+          "choices": [
+            "would",
+            "must have",
+            "should"
+          ],
+          "answer": 1,
+          "why": "Must have + past participle expresses a strong deduction about the past."
+        },
+        {
+          "id": "g2",
+          "q": "By the time the meeting started, Maya _____ the report.",
+          "choices": [
+            "had finished",
+            "has finished",
+            "was finish"
+          ],
+          "answer": 0,
+          "why": "Use the past perfect for an action completed before another past event."
+        },
+        {
+          "id": "g3",
+          "q": "The tutor recommended _____ the paragraph aloud.",
+          "choices": [
+            "read",
+            "to read",
+            "reading"
+          ],
+          "answer": 2,
+          "why": "Recommend is commonly followed by a gerund when no object is used."
+        },
+        {
+          "id": "g4",
+          "q": "The new website _____ at the moment.",
+          "choices": [
+            "is testing",
+            "has tested",
+            "is being tested"
+          ],
+          "answer": 2,
+          "why": "Present continuous passive: am/is/are being + past participle."
+        },
+        {
+          "id": "g5",
+          "q": "If they had tested the prototype, they _____ the problem earlier.",
+          "choices": [
+            "would notice",
+            "would have noticed",
+            "noticed"
+          ],
+          "answer": 1,
+          "why": "The third conditional uses if + past perfect and would have + past participle."
+        },
+        {
+          "id": "g6",
+          "q": "Not only _____ the brief, but she also presented a new concept.",
+          "choices": [
+            "she did understand",
+            "she understood",
+            "did she understand"
+          ],
+          "answer": 2,
+          "why": "When not only begins the clause, use subject–auxiliary inversion."
+        },
+        {
+          "id": "g7",
+          "q": "The instructions were _____ complicated for a beginner to follow.",
+          "choices": [
+            "enough",
+            "too",
+            "such"
+          ],
+          "answer": 1,
+          "why": "Too + adjective + to-infinitive expresses more than is manageable."
+        },
+        {
+          "id": "g8",
+          "q": "You will not improve _____ you practise regularly.",
+          "choices": [
+            "although",
+            "unless",
+            "despite"
+          ],
+          "answer": 1,
+          "why": "Unless means if not and introduces a condition."
+        },
+        {
+          "id": "g9",
+          "q": "If I _____ more time, I would take an advanced writing course.",
+          "choices": [
+            "have",
+            "had",
+            "would have"
+          ],
+          "answer": 1,
+          "why": "The second conditional uses if + past simple, followed by would + base verb."
+        }
+      ],
+      "reading": {
+        "title": "Making feedback useful",
+        "level": "B1–B2",
+        "text": "Feedback can improve a piece of work, but only when comments are specific enough to guide the next decision. For this reason, teams should examine the context before choosing a solution. A method that works for one audience may create difficulties for another. The process takes time, and the first result is not always successful. However, careful revision often produces a clearer and more useful outcome. The strongest approach is therefore flexible: it keeps a clear purpose while remaining open to new evidence.",
         "questions": [
           {
             "q": "What is the main idea of the passage?",
