@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-27T05:18:48.441Z",
+  "updatedAt": "2026-11-28T05:07:43.198Z",
   "packs": [
     {
       "date": "2026-11-25",
@@ -900,6 +900,320 @@
         "title": "Making feedback useful",
         "level": "B1–B2",
         "text": "Feedback can improve a piece of work, but only when comments are specific enough to guide the next decision. For this reason, teams should examine the context before choosing a solution. A method that works for one audience may create difficulties for another. The process takes time, and the first result is not always successful. However, careful revision often produces a clearer and more useful outcome. The strongest approach is therefore flexible: it keeps a clear purpose while remaining open to new evidence.",
+        "questions": [
+          {
+            "q": "What is the main idea of the passage?",
+            "choices": [
+              "A thoughtful process matters more than a single quick idea.",
+              "The most complex solution is always the best.",
+              "Research should happen only after a project is finished."
+            ],
+            "answer": 0,
+            "why": "The passage focuses on context, evidence, testing and thoughtful decisions."
+          },
+          {
+            "q": "Why are small tests useful?",
+            "choices": [
+              "They remove the need for research.",
+              "They can reveal problems and real user needs.",
+              "They guarantee that the first idea will succeed."
+            ],
+            "answer": 1,
+            "why": "The text explains that testing reveals issues that may be hard to notice otherwise."
+          },
+          {
+            "q": "What does the writer suggest about assumptions?",
+            "choices": [
+              "They should replace observation.",
+              "They are always incorrect.",
+              "They can be a starting point, but should be checked against evidence."
+            ],
+            "answer": 2,
+            "why": "The passage explicitly distinguishes assumptions from evidence."
+          },
+          {
+            "q": "Which statement best matches the conclusion?",
+            "choices": [
+              "Progress depends on using information meaningfully.",
+              "Progress means collecting as much material as possible.",
+              "Appearance is the only measure of quality."
+            ],
+            "answer": 0,
+            "why": "The final sentence emphasises meaningful application rather than collecting."
+          }
+        ]
+      }
+    },
+    {
+      "date": "2026-11-28",
+      "vocabulary": [
+        {
+          "id": "v0",
+          "word": "to distribute",
+          "meaning": "to give or deliver something to a number of people or places",
+          "sentence": "The organisation distributed the guide to local schools.",
+          "collocation": "distribute materials / copies / information",
+          "choices": [
+            "to distribute",
+            "to enable",
+            "to exceed",
+            "to proceed"
+          ],
+          "answer": 0,
+          "why": "The definition and sentence point to this expression. Notice the collocation as well."
+        },
+        {
+          "id": "v1",
+          "word": "to implement",
+          "meaning": "to put a plan, decision or system into action",
+          "sentence": "The school implemented a new feedback system.",
+          "collocation": "implement a strategy / policy / change",
+          "choices": [
+            "to implement",
+            "to regulate",
+            "to engage",
+            "to conduct"
+          ],
+          "answer": 0,
+          "why": "The definition and sentence point to this expression. Notice the collocation as well."
+        },
+        {
+          "id": "v2",
+          "word": "to represent",
+          "meaning": "to show, describe or act on behalf of someone or something",
+          "sentence": "The symbol represents the connection between the two communities.",
+          "collocation": "represent an idea / group / value",
+          "choices": [
+            "to consume",
+            "to represent",
+            "to comprise",
+            "to consent"
+          ],
+          "answer": 1,
+          "why": "The definition and sentence point to this expression. Notice the collocation as well."
+        },
+        {
+          "id": "v3",
+          "word": "to consent",
+          "meaning": "to give permission or agree to something",
+          "sentence": "Participants must consent before their photographs are used.",
+          "collocation": "consent to something / give consent",
+          "choices": [
+            "to accommodate",
+            "to consent",
+            "to prioritise",
+            "to proceed"
+          ],
+          "answer": 1,
+          "why": "The definition and sentence point to this expression. Notice the collocation as well."
+        },
+        {
+          "id": "v4",
+          "word": "to detect",
+          "meaning": "to notice or discover something that is difficult to see",
+          "sentence": "The user test helped detect a confusing step in the process.",
+          "collocation": "detect a problem / change / pattern",
+          "choices": [
+            "to represent",
+            "to detect",
+            "to display",
+            "to exclude"
+          ],
+          "answer": 1,
+          "why": "The definition and sentence point to this expression. Notice the collocation as well."
+        },
+        {
+          "id": "v5",
+          "word": "to exceed",
+          "meaning": "to be greater or more than a limit or expectation",
+          "sentence": "The final cost should not exceed the agreed budget.",
+          "collocation": "exceed expectations / a limit / a budget",
+          "choices": [
+            "to implement",
+            "crucial",
+            "to exceed",
+            "to detect"
+          ],
+          "answer": 2,
+          "why": "The definition and sentence point to this expression. Notice the collocation as well."
+        },
+        {
+          "id": "v6",
+          "word": "to recover",
+          "meaning": "to return to a normal or better condition after difficulty",
+          "sentence": "It took the project a week to recover from the technical problem.",
+          "collocation": "recover from a setback / illness / loss",
+          "choices": [
+            "to eliminate",
+            "compelling",
+            "to recover",
+            "crucial"
+          ],
+          "answer": 2,
+          "why": "The definition and sentence point to this expression. Notice the collocation as well."
+        },
+        {
+          "id": "v7",
+          "word": "to comprise",
+          "meaning": "to consist of particular parts or members",
+          "sentence": "The course comprises six modules and a final project.",
+          "collocation": "comprise a whole / several parts",
+          "choices": [
+            "to comprise",
+            "to exclude",
+            "to enable",
+            "to prioritise"
+          ],
+          "answer": 0,
+          "why": "The definition and sentence point to this expression. Notice the collocation as well."
+        },
+        {
+          "id": "v8",
+          "word": "to decline",
+          "meaning": "to become smaller, weaker or less; to politely refuse",
+          "sentence": "The number of printed copies declined after the campaign moved online.",
+          "collocation": "decline steadily / decline an invitation",
+          "choices": [
+            "to accommodate",
+            "to dominate",
+            "to enable",
+            "to decline"
+          ],
+          "answer": 3,
+          "why": "The definition and sentence point to this expression. Notice the collocation as well."
+        },
+        {
+          "id": "v9",
+          "word": "to enable",
+          "meaning": "to make it possible for someone to do something",
+          "sentence": "The new tool enables users to compare different versions.",
+          "collocation": "enable someone to do something / enable access",
+          "choices": [
+            "to enable",
+            "to conduct",
+            "to exceed",
+            "to eliminate"
+          ],
+          "answer": 0,
+          "why": "The definition and sentence point to this expression. Notice the collocation as well."
+        }
+      ],
+      "grammar": [
+        {
+          "id": "g0",
+          "q": "The instructions were _____ complicated for a beginner to follow.",
+          "choices": [
+            "too",
+            "such",
+            "enough"
+          ],
+          "answer": 0,
+          "why": "Too + adjective + to-infinitive expresses more than is manageable."
+        },
+        {
+          "id": "g1",
+          "q": "You will not improve _____ you practise regularly.",
+          "choices": [
+            "unless",
+            "despite",
+            "although"
+          ],
+          "answer": 0,
+          "why": "Unless means if not and introduces a condition."
+        },
+        {
+          "id": "g2",
+          "q": "If I _____ more time, I would take an advanced writing course.",
+          "choices": [
+            "would have",
+            "had",
+            "have"
+          ],
+          "answer": 1,
+          "why": "The second conditional uses if + past simple, followed by would + base verb."
+        },
+        {
+          "id": "g3",
+          "q": "I wish I _____ more carefully before sending that email.",
+          "choices": [
+            "had checked",
+            "checked",
+            "would check"
+          ],
+          "answer": 0,
+          "why": "Wish + past perfect expresses regret about a past action."
+        },
+        {
+          "id": "g4",
+          "q": "Despite _____ several problems, the team met the deadline.",
+          "choices": [
+            "to face",
+            "face",
+            "facing"
+          ],
+          "answer": 2,
+          "why": "Despite is followed by a noun or gerund, not a finite clause."
+        },
+        {
+          "id": "g5",
+          "q": "This is the illustrator _____ work inspired the campaign.",
+          "choices": [
+            "who",
+            "whose",
+            "which"
+          ],
+          "answer": 1,
+          "why": "Whose expresses possession in a relative clause."
+        },
+        {
+          "id": "g6",
+          "q": "The more carefully you edit, _____ your writing becomes.",
+          "choices": [
+            "the clearer",
+            "clearer",
+            "the clearest"
+          ],
+          "answer": 0,
+          "why": "Use the + comparative in both parts of the correlative comparative structure."
+        },
+        {
+          "id": "g7",
+          "q": "The designer, _____ portfolio we reviewed, has joined the studio.",
+          "choices": [
+            "whose",
+            "which",
+            "who"
+          ],
+          "answer": 0,
+          "why": "Whose links the person to something they possess or are associated with."
+        },
+        {
+          "id": "g8",
+          "q": "It was _____ useful explanation that everyone understood the rule.",
+          "choices": [
+            "so",
+            "too",
+            "such a"
+          ],
+          "answer": 2,
+          "why": "Such a + adjective + singular countable noun is the correct structure."
+        },
+        {
+          "id": "g9",
+          "q": "The final design _____ by the client tomorrow.",
+          "choices": [
+            "will be approved",
+            "will approve",
+            "will have approving"
+          ],
+          "answer": 0,
+          "why": "The future passive is will be + past participle."
+        }
+      ],
+      "reading": {
+        "title": "Designing with evidence",
+        "level": "B1–B2",
+        "text": "A successful project rarely depends on one clever idea. It develops through observation, testing and decisions that respond to real needs. Small tests can reveal problems that are difficult to notice from inside the project. They also give people a chance to explain what they actually need. It is important to distinguish between an assumption and evidence. An assumption may be a useful starting point, but it should not replace observation. This suggests that progress comes not from collecting more material, but from using what we learn in a meaningful way.",
         "questions": [
           {
             "q": "What is the main idea of the passage?",
